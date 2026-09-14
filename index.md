@@ -81,9 +81,9 @@ other actions, may pause for a named person or agent, and settles when they answ
 
 <div>
 <dt>Blockchain micropayments</dt>
-<dd>Between nodes, every call settles on chain. An obligation too small to pay economically is
-settled by a fair draw in Rivest's model: expected payment exact, and neither side can
-choose the outcome.</dd>
+<dd>Between nodes, every call settles on chain. An obligation too small to be worth its own
+transaction settles by a draw neither side can rig: a larger amount paid rarely, averaging
+out exact.</dd>
 </div>
 
 <div>
