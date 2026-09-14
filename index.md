@@ -35,11 +35,9 @@ has_toc: false
 
 <h1 class="juice-pitch">{{ site.description }}</h1>
 
-<p class="juice-lede">A capability is something that can be done &mdash; computation,
-information, work &mdash; supplied by a service, a person or an agent, with an owner and a
-price. Juice publishes capabilities as <strong>actions</strong>: humans and agents discover
-them, call them, build new ones out of them, and are paid when theirs are used. The kernel
-is the software that runs a node of this network, as a web server runs a node of the web.</p>
+<p class="juice-lede">Juice terraforms the web you already have: an existing API becomes
+an <strong>action</strong> &mdash; work with an owner and a price &mdash; that anyone can
+call, pay for, and compose into new ones. A kernel is the software that runs one node.</p>
 
 <nav class="juice-actions" aria-label="Primary">
 <a class="juice-button" href="{{ '/juice/' | relative_url }}">Manual</a>
