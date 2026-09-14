@@ -379,11 +379,13 @@ code {
   // emits as `!important`, so the size has to answer in kind.
   .juice-pitch {
     color: #fff;
-    font-size: 150% !important;
+    // 140% puts the line at 877px in the 936px band; 150% was four pixels over.
+    // Where it must wrap, balance splits it evenly rather than orphaning two words.
+    font-size: 140% !important;
     font-weight: 700;
     margin-bottom: 0;
-    max-width: none; // one line; the 46em cap wrapped two words onto a second
-    text-wrap: pretty;
+    max-width: none;
+    text-wrap: balance;
   }
 
   // Not italic, unlike the reference's subtext: that is one line, and this is
@@ -458,6 +460,7 @@ code {
     dt {
       color: #fff;
       font-weight: 700;
+      text-align: left; // the theme right-aligns terms for its own grid
 
       &::after {
         content: none;
