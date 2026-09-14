@@ -1,5 +1,9 @@
 title: Juice
-description: An economic network of capabilities for humans and agents.
+# jekyll-seo-tag emits this as both `description` and `og:description`, where a
+# search result or a shared link carries no wordmark above it, so it names Juice.
+# The landing page's own heading does not: the masthead has just said the name,
+# in type and in its aria-label. That heading is written out in index.md.
+description: Juice — an economic network of capabilities for humans and agents.
 
 url: https://daios-ai.github.io
 baseurl: /juice-site          # project site path; drop when a custom domain is added

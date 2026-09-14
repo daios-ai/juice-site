@@ -33,11 +33,11 @@ has_toc: false
 
 {% include juice-masthead.html %}
 
-<h1 class="juice-pitch">{{ site.description }}</h1>
+<h1 class="juice-pitch">An economic network of capabilities for humans and agents.</h1>
 
-<p class="juice-lede">Juice terraforms the web you already have: an existing API becomes
-an <strong>action</strong> &mdash; work with an owner and a price &mdash; that anyone can
-call, pay for, and compose into new ones. A kernel is the software that runs one node.</p>
+<p class="juice-lede">Juice terraforms the web we already have: any existing
+HTTP endpoint becomes an <strong>action</strong> that anyone can call, pay for,
+and compose into new ones.</p>
 
 <nav class="juice-actions" aria-label="Primary">
 <a class="juice-button" href="{{ '/juice/' | relative_url }}">Manual</a>
@@ -63,7 +63,7 @@ nothing arranged in advance.
   page a ribbon.
 {%- endcomment -%}
 <section class="juice-section juice-section--wide">
-<h2>What makes it different</h2>
+<h2>Features</h2>
 
 <dl class="juice-features">
 <div>
@@ -107,7 +107,7 @@ network: no public address, no port forwarding, nothing hosted.</dd>
 </div>
 
 <div>
-<dt>Your own model</dt>
+<dt>Bring your own LLM</dt>
 <dd>The node's language model is whichever you point it at, a local one by default. Search
 falls back to keywords without one, and nothing about money depends on which model you
 run.</dd>
