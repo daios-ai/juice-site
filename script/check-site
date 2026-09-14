@@ -6,7 +6,7 @@ navigation, the cross-page links inside an imported manual, or the search index
 actually resolve, and those are exactly what break when a permalink or a
 baseurl is wrong. This checks the rendered output instead.
 
-Usage: BASEURL=/juice-web python3 script/check-site _site
+Usage: BASEURL=/juice-site python3 script/check-site _site
 """
 
 import json

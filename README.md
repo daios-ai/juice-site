@@ -1,4 +1,4 @@
-# juice-web
+# juice-site
 
 The website for the Juice system: a homepage plus the manuals of the component
 repositories, served from one place.
@@ -34,7 +34,7 @@ Fetching from a private repository needs a token.
   Contents: read on the manual repositories.
 
   ```bash
-  gh secret set MANUALS_TOKEN --repo daios-ai/juice-web
+  gh secret set MANUALS_TOKEN --repo daios-ai/juice-site
   ```
 
 - **Locally**: nothing to set up. The script falls back to `gh auth token`.
@@ -46,14 +46,14 @@ Needs Ruby. Without it, push and read the workflow log instead.
 ```bash
 bundle install
 python3 script/fetch-manuals
-bundle exec jekyll serve            # http://localhost:4000/juice-web/
+bundle exec jekyll serve            # http://localhost:4000/juice-site/
 ```
 
 To run the checks against a build:
 
 ```bash
 bundle exec jekyll build
-BASEURL=/juice-web python3 script/check-site _site
+BASEURL=/juice-site python3 script/check-site _site
 ```
 
 ## Adding a manual
