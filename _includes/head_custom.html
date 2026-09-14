@@ -1,3 +1,12 @@
+{%- comment -%}
+  The icon set from juice-ui (server/templates/layout.html), so a Juice tab looks
+  the same whichever of the two it is. The SVG is preferred by anything modern;
+  the .ico behind it is emitted by the theme from `favicon_ico` in _config.yml,
+  and covers browsers that ignore an SVG icon.
+{%- endcomment -%}
+<link rel="icon" href="{{ '/assets/juice-logo.svg' | relative_url }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap">

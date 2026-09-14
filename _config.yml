@@ -9,6 +9,12 @@ plugins:
   - jekyll-remote-theme
 
 logo: /assets/juice-logo.svg
+
+# The theme's _includes/favicon.html emits the <link> for this, having first
+# checked the file is really there, and puts it through relative_url. The SVG
+# and Apple icons it has no notion of; those are in _includes/head_custom.html.
+favicon_ico: /assets/favicon.ico
+
 search_enabled: true
 heading_anchors: true
 nav_sort: case_insensitive
