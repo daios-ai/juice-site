@@ -382,6 +382,7 @@ code {
     font-size: 150% !important;
     font-weight: 700;
     margin-bottom: 0;
+    max-width: none; // one line; the 46em cap wrapped two words onto a second
     text-wrap: pretty;
   }
 
@@ -439,24 +440,24 @@ code {
     max-width: none;
   }
 
-  // The feature list. A definition list rather than a bulleted one because the
-  // theme draws markers as an absolutely positioned `::before` at a negative
-  // margin, which hangs at an arbitrary distance from centred, ragged text.
-  // The term takes the heading treatment without the uppercase: it names a
-  // thing rather than labelling a section.
+  // The feature list: six parallel items, so two columns on a wide screen rather
+  // than one centred ribbon. The pairs are wrapped in divs so the grid places
+  // pairs, not terms and definitions separately. The theme lays every dl out as
+  // its own two-column grid with a colon after each term; both undone here.
   .juice-features {
-    // The theme lays every dl out as a two-column grid with the terms
-    // right-aligned and a colon appended, which under a centred column
-    // produces a cramped left gutter of broken words. Back to blocks: the
-    // term on its own line, the definition beneath it.
-    display: block;
+    display: grid;
+    gap: var(--juice-space-neutral) var(--juice-space-x-large);
+    grid-template-columns: minmax(0, 1fr);
     margin: 0;
-    max-width: 40em;
+    text-align: left;
+
+    @include mq(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
     dt {
       color: #fff;
       font-weight: 700;
-      text-align: center;
 
       &::after {
         content: none;
@@ -466,10 +467,6 @@ code {
     dd {
       margin: 0.35em 0 0;
       text-wrap: pretty;
-    }
-
-    dd + dt {
-      margin-top: var(--juice-space-neutral);
     }
   }
 

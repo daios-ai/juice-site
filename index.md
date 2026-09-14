@@ -60,40 +60,55 @@ network by doing nothing beyond marking an action public.
 {%- comment -%}
   A definition list rather than a bulleted list: the theme draws list markers as an
   absolutely positioned `::before` at a negative margin, which under centred text hangs
-  at an arbitrary distance from the ragged edge. A `dl` carries no marker.
+  at an arbitrary distance from the ragged edge. A `dl` carries no marker. Each pair is
+  wrapped in a div, which HTML permits inside a dl, so the pairs can be laid out as a
+  two-column grid on a wide screen: six parallel items in one centred column made the
+  page a ribbon.
 {%- endcomment -%}
-<section class="juice-section">
+<section class="juice-section juice-section--wide">
 <h2>What makes it different</h2>
 
 <dl class="juice-features">
+<div>
 <dt>Composable actions</dt>
 <dd>An action is typed and priced, and may call other actions within its own budget. Its
 owner sells the result as one thing at one advertised price, and the parties beneath are
 paid from it.</dd>
+</div>
 
+<div>
 <dt>Delegated execution</dt>
 <dd>Like running a process, but on the network: a funded computation is handed off, may
 call other actions, may pause for one named person or agent, and resumes and settles when
 they answer.</dd>
+</div>
 
+<div>
 <dt>Blockchain micropayments</dt>
 <dd>Between kernels, every call settles on its own, on the network's chain. An obligation
 too small to pay economically is settled by a fair draw in Rivest's model: a fixed larger
 amount is paid with the probability that makes the expected payment exact, and neither
 side can choose the outcome.</dd>
+</div>
 
+<div>
 <dt>A market of capabilities</dt>
 <dd>Public actions are found by natural-language search across independently operated
 kernels, each with its interface and one advertised price that funds the whole composed
 work.</dd>
+</div>
 
+<div>
 <dt>Traceability</dt>
 <dd>Every call records who paid, who asked and who was paid, and leaves a signed receipt
 either side can verify offline.</dd>
+</div>
 
+<div>
 <dt>Thick reputation</dt>
 <dd>Feedback is tied to real trade: a rating rides with the receipt of the call it judges,
 crosses kernels as verifiable evidence, and is never an opaque score.</dd>
+</div>
 </dl>
 </section>
 
