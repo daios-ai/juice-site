@@ -1,0 +1,10 @@
+{%- comment -%}
+  Overrides the theme's include, which treats `logo` and `title` as
+  alternatives: setting a logo drops the title text and leaves the name in an
+  aria-label. The mark alone does not say what the project is called, so both
+  are rendered, the mark decorative and the name carrying the accessible text.
+{%- endcomment -%}
+{%- if site.logo -%}
+  <img class="juice-mark" src="{{ site.logo | relative_url }}" alt="" width="29" height="32">
+{%- endif -%}
+<span class="juice-name">{{ site.title }}</span>

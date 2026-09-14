@@ -185,6 +185,30 @@
   }
 }
 
+// Site title. The theme's own `.site-logo` is a full-width background image
+// with no text beside it; `_includes/title.html` replaces it with the mark and
+// the name as two flex children of `.site-title`, which the theme already lays
+// out as a centred row.
+//
+// The name takes the same uppercase letterspaced treatment as the sidebar's
+// section headings, so the header and the navigation under it read as one.
+.site-title {
+  gap: 0.6rem;
+}
+
+.juice-mark {
+  flex: none;
+  height: 1.75em;
+  width: auto;
+}
+
+.juice-name {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
 // Sizing.
 //
 // The theme sets the root to 14px on phones and 16px above that, which reads
