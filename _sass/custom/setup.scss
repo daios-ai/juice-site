@@ -15,3 +15,15 @@ $tn-terminal-blue: #7aa2f7; // --rgb-terminal-blue
 $tn-terminal-cyan: #7dcfff; // --rgb-terminal-cyan
 $tn-turquoise: #b4f9f8; // --rgb-turquoise
 $tn-green: #9ece6a; // --rgb-green
+
+// The logotype face, taken from the masthead animation's wordmark so the mark
+// in the manual's sidebar and the mark on the landing page are the same
+// lettering. The literal stack lives on the <text> element in
+// _includes/juice-masthead.html; that element is the reference, this is the
+// copy. Deliberately not JetBrains Mono, which the rest of the site uses.
+$juice-logotype-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
+  "Liberation Mono", monospace;
+
+// -4 units at the wordmark's font-size of 74, expressed so it holds at any size.
+$juice-logotype-tracking: -0.054em;
+$juice-logotype-weight: 600;

@@ -202,11 +202,15 @@
   width: auto;
 }
 
+// The same lettering as the masthead wordmark: the mark reads identically in
+// the sidebar and on the landing page. Not uppercased and not letterspaced,
+// unlike the navigation labels around it, because the wordmark is a logotype
+// rather than a label.
 .juice-name {
   color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
+  font-family: $juice-logotype-family;
+  font-weight: $juice-logotype-weight;
+  letter-spacing: $juice-logotype-tracking;
 }
 
 // Sizing.
