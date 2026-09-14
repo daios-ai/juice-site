@@ -372,20 +372,22 @@ code {
 }
 
 .main-content .juice-landing {
-  // The reference's page title is the same size as a section heading and is not
-  // bold: the mark above it is the loud element and the pitch is a sentence.
-  // The theme's h1 is fs-8, which the mixin emits as `!important`, so the size
-  // has to answer in kind.
+  // The reference sets its page title at section-heading size and light weight,
+  // which works under a masthead the height of ten lines of type. Here, at that
+  // size and weight, the title read as the first line of the paragraph beneath
+  // it; it takes weight and one step up. The theme's h1 is fs-8, which the mixin
+  // emits as `!important`, so the size has to answer in kind.
   .juice-pitch {
-    color: $tn-terminal-white;
-    font-size: 125% !important;
-    font-weight: 300;
+    color: #fff;
+    font-size: 150% !important;
+    font-weight: 700;
     margin-bottom: 0;
     text-wrap: pretty;
   }
 
+  // Not italic, unlike the reference's subtext: that is one line, and this is
+  // five sentences, which italic monospace turns into a wall.
   .juice-lede {
-    font-style: italic;
     margin-bottom: 0;
     text-wrap: pretty;
 
@@ -443,12 +445,22 @@ code {
   // The term takes the heading treatment without the uppercase: it names a
   // thing rather than labelling a section.
   .juice-features {
+    // The theme lays every dl out as a two-column grid with the terms
+    // right-aligned and a colon appended, which under a centred column
+    // produces a cramped left gutter of broken words. Back to blocks: the
+    // term on its own line, the definition beneath it.
+    display: block;
     margin: 0;
     max-width: 40em;
 
     dt {
       color: #fff;
       font-weight: 700;
+      text-align: center;
+
+      &::after {
+        content: none;
+      }
     }
 
     dd {
