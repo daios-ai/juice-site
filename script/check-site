@@ -42,7 +42,21 @@ EXPECTED_NAV = [
     "Operating a kernel",
     "Reference",
 ]
-PRIVATE_LINK_RE = re.compile(r"https://github\.com/[^/\s\"']+/[^/\s\"']+/blob/")
+
+
+def source_repos(manifest):
+    """The repositories manuals are pulled from, read out of manuals.yml.
+
+    Parsed with a regex rather than PyYAML to keep this script dependency-free;
+    the manifest is a flat list and `repo:` lines are unambiguous.
+    """
+    try:
+        text = manifest.read_text(encoding="utf-8")
+    except OSError:
+        return []
+    return re.findall(r"^\s*-?\s*repo:\s*([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)\s*$",
+                      text, re.M)
+
 
 
 class Links(HTMLParser):
@@ -230,12 +244,25 @@ def main(argv):
         if not checked:
             errors.append("search index has no usable entries")
 
-    # 5. Report blob links, which 404 while the source repo is private.
-    blob = sum(len(PRIVATE_LINK_RE.findall(p.read_text(encoding="utf-8", errors="replace")))
-               for p in pages)
-    if blob:
-        warnings.append(f"{blob} link(s) point at github.com blob URLs; these 404 "
-                        f"for visitors while the source repository is private")
+    # 5. Report links back into a manual's own source repository. Those 404 for
+    #    visitors while that repository is private. Scoped to the repos in
+    #    manuals.yml so the theme's own icon-license links are not counted.
+    repos = source_repos(Path(__file__).resolve().parent.parent / "manuals.yml")
+    for repo in repos:
+        pat = re.compile(r"https://github\.com/" + re.escape(repo) + r"/blob/[^\"'\s>]*")
+        hits = {}
+        for page in pages:
+            found = pat.findall(page.read_text(encoding="utf-8", errors="replace"))
+            for url in found:
+                hits.setdefault(url, []).append(str(page.relative_to(site)))
+        if hits:
+            n = sum(len(v) for v in hits.values())
+            warnings.append(f"{n} link(s) on {len({p for v in hits.values() for p in v})} "
+                            f"page(s) point into {repo}; these 404 for visitors while "
+                            f"that repository is private")
+            for url in sorted(hits):
+                warnings.append(f"    {url.split('/blob/', 1)[1]}  "
+                                f"<- {', '.join(sorted(set(hits[url])))}")
 
     for w in warnings:
         print(f"  WARN {w}")
