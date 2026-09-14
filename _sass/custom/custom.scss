@@ -240,3 +240,249 @@ code {
     line-height: 1.5;
   }
 }
+
+// The landing page.
+//
+// Shaped after the reference's own landing page and its /foundation page: a
+// masthead, a one-line pitch, a row of buttons, then content in sections ruled
+// off from one another.
+// Source: omacom/omarchy-site at 9832321, assets/css/{root,header,nav,button,
+// foundation,pre}.css.
+
+// Three of the theme's layout rules are nested under `.side-bar + .main`, so
+// they quietly do not apply to a page with `nav_enabled: false`. The landing
+// page is the only such page, and all three need an answer. Keyed off the
+// absence of a sidebar rather than off the landing class, because that is the
+// condition the three actually share.
+.main:not(.side-bar + .main) {
+  // Without a sidebar there is nothing to the left, so the column can be wider
+  // here than on a manual page. This is what gives the manuals table room: at
+  // this root size 50rem less the wrap's gutters is 46em exactly, which is the
+  // reference's text column with nothing left over.
+  @include mq(md) {
+    max-width: 60rem;
+  }
+
+  // `.main-header { display: none }` below md is one of the three, so without
+  // it the search field and the aux links stack above the masthead on phones,
+  // on this page and no other. The button row and the footer carry the same
+  // destinations.
+  > .main-header {
+    display: none;
+
+    @include mq(md) {
+      display: flex;
+    }
+  }
+
+  // The masthead brings its own top measure; the wrap's is a second one.
+  .main-content-wrap {
+    padding-top: 0;
+  }
+}
+
+.main-content .juice-landing {
+  // The reference's spacing scale. In em, so a measure taken on a larger
+  // element is larger, which is most of why its proportions hold together.
+  // Declared here rather than at :root so the manual pages, which keep the
+  // theme's rem rhythm, never inherit it.
+  --juice-space-medium: 1em;
+  --juice-space-neutral: 1.5em;
+  --juice-space-large: 2em;
+  --juice-space-x-large: 3em;
+  --juice-space-xx-large: 4em;
+  --juice-transition: 0.15s cubic-bezier(0.33, 1, 0.68, 1);
+
+  display: grid;
+  // An `auto` track takes its minimum from the widest item, so the manuals
+  // table would widen the page rather than scroll inside its own wrapper.
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  line-height: $body-line-height;
+  text-align: center;
+
+  > * {
+    max-width: 46em;
+    width: 100%;
+  }
+
+  // The rhythm is per-element, as on the reference, rather than one grid gap:
+  // masthead 4em, pitch 1em, lede 1.5em, buttons 2em.
+  .juice-hero {
+    margin-top: var(--juice-space-xx-large);
+    max-width: none;
+  }
+
+  .juice-pitch {
+    margin-top: var(--juice-space-medium);
+  }
+
+  .juice-lede {
+    margin-top: var(--juice-space-neutral);
+  }
+
+  .juice-actions {
+    margin-top: var(--juice-space-large);
+  }
+
+  .juice-section {
+    margin-top: calc(var(--juice-space-large) * 1.2);
+  }
+
+  // 4em of margin and 4em of padding puts the hairline midway between two
+  // sections, 8em apart, which is the reference's gap plus padding-top.
+  .juice-section + .juice-section {
+    border-top: $border $border-color;
+    margin-top: var(--juice-space-xx-large);
+    padding-top: var(--juice-space-xx-large);
+  }
+
+  @include mq(lg) {
+    // With the wrap's own 2rem this is the reference's 4em at its widest step.
+    padding-inline: var(--juice-space-large);
+
+    .juice-hero {
+      margin-top: var(--juice-space-x-large);
+    }
+  }
+}
+
+// The masthead. The scene is 4:1; giving the box that ratio lets the SVG scale
+// with nothing left over. Below about 800px the ratio would squeeze the marks
+// to nothing, so the height stops falling and `slice` crops instead. The box
+// is never wider than 4:1, so the crop can only ever take the left and right
+// ends of the flight path, where bees are entering and leaving; the full
+// height, and the lockup in the middle, are visible at every width.
+.main-content .juice-landing .juice-hero {
+  aspect-ratio: 4 / 1;
+  min-height: 11rem;
+  overflow: hidden;
+
+  #juice-scene {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  #juice-wordmark {
+    fill: #fff;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+  }
+}
+
+.main-content .juice-landing {
+  // The reference's page title is the same size as a section heading and is not
+  // bold: the mark above it is the loud element and the pitch is a sentence.
+  // The theme's h1 is fs-8, which the mixin emits as `!important`, so the size
+  // has to answer in kind.
+  .juice-pitch {
+    color: $tn-terminal-white;
+    font-size: 125% !important;
+    font-weight: 300;
+    margin-bottom: 0;
+    text-wrap: pretty;
+  }
+
+  .juice-lede {
+    font-style: italic;
+    margin-bottom: 0;
+    text-wrap: pretty;
+
+    strong {
+      color: #fff;
+    }
+  }
+
+  .juice-section {
+    display: grid;
+    gap: var(--juice-space-neutral);
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+
+    // Colour and weight are deliberately left to the existing
+    // `.main-content h1..h6` rule. The reference sets terminal-white here
+    // because its body copy is terminal-blue; ours is already terminal-white,
+    // so copying the value would make a heading the colour of its own
+    // paragraph. The relationship carries over, the value does not.
+    h2 {
+      font-size: 125% !important;
+      letter-spacing: 0.075em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      max-width: 40em;
+      text-wrap: pretty;
+    }
+
+    // The section's gap is the only measure wanted; the theme adds one above
+    // the wrapper and another below it.
+    .table-wrapper {
+      margin: 0;
+      text-align: left;
+    }
+
+    // Three monospace columns at the theme's 7.5rem floor overflow the section
+    // on a narrow desktop. The middle column is prose and should wrap.
+    th,
+    td {
+      min-width: 0;
+    }
+  }
+
+  .juice-section--wide {
+    max-width: none;
+  }
+
+  .juice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--juice-space-medium);
+    justify-content: center;
+  }
+
+  // Source: omacom/omarchy-site at 9832321, assets/css/button.css.
+  .juice-button {
+    align-items: center;
+    background: $tn-terminal-blue;
+    border-radius: 0.4em;
+    box-shadow:
+      0 1px 0 0 rgba(#000, 0.1),
+      0 0.2em 1.2em -0.4em rgba(#000, 0.2),
+      0 0.4em 2em -0.8em rgba(#000, 0.3),
+      0 0.4em 0.4em -0.8em rgba(#000, 0.4),
+      0 0.8em 0.8em -1.2em rgba(#000, 0.5),
+      0 1.2em 1.2em -1.6em rgba(#000, 0.6);
+    color: $tn-night;
+    display: flex;
+    font-weight: 700;
+    gap: 1ch;
+    height: 2.9em;
+    line-height: 1;
+    // `.main-content a` is overflow: hidden, which clips a flex child sitting
+    // on the negative margins this line-height needs.
+    overflow: visible;
+    padding-inline: var(--juice-space-medium);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background var(--juice-transition),
+      color var(--juice-transition);
+
+    &:focus-visible {
+      outline: 2px solid $tn-turquoise;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Only where hover is real, so a tap does not leave a button stuck turquoise.
+@media (hover: hover) {
+  .main-content .juice-landing .juice-button:hover {
+    background: $tn-turquoise;
+    color: $tn-night;
+  }
+}
