@@ -73,9 +73,9 @@ other actions, may pause for a named person or agent, and settles when they answ
 
 <div>
 <dt>Blockchain micropayments</dt>
-<dd>Between nodes, every call settles on chain. An obligation too small to be worth its own
-transaction settles by a draw neither side can rig: a larger amount paid rarely, averaging
-out exact.</dd>
+<dd>Between nodes, every call settles on <a href="https://arbitrum.io/">Arbitrum One</a>. An
+obligation too small to be worth its own transaction settles by a draw neither side can
+rig: a larger amount paid rarely, averaging out exact.</dd>
 </div>
 
 <div>
