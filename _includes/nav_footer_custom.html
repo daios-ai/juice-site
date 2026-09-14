@@ -1,9 +1,6 @@
 {%- comment -%}
-  Nothing belongs under the sidebar navigation: a reader there is looking for a
-  page, not for notes about the site.
-
-  This file must not be empty, though. The theme tests the captured output of
-  this include and credits itself whenever it comes back blank, in the sidebar
-  and again in the footer shown on phones. A comment renders nothing and still
-  fails that test.
+  Shown under the sidebar navigation, and under the content on phones. The
+  theme credits itself whenever this include comes back empty, so it also has
+  to stay non-empty.
 {%- endcomment -%}
+<p class="juice-colophon">&copy; {{ 'now' | date: '%Y' }} DAIOS</p>
