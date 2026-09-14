@@ -321,6 +321,16 @@ code {
     margin-top: var(--juice-space-medium);
   }
 
+  // A page with no hero starts at its title, which would otherwise sit one em
+  // under the header rule. It takes the measure the hero has.
+  &.juice-page {
+    padding-top: var(--juice-space-xx-large);
+
+    .juice-pitch {
+      margin-top: 0;
+    }
+  }
+
   .juice-lede {
     margin-top: var(--juice-space-neutral);
   }

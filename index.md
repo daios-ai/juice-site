@@ -46,14 +46,6 @@ and compose into new ones.</p>
 <a class="juice-button" href="https://daios.ai/static/pdf/daios-vision-paper.pdf">Vision paper</a>
 </nav>
 
-<section class="juice-section" markdown="1">
-<h2>The network</h2>
-
-The network is independently operated nodes, each holding the actions it publishes.
-Anything public on one node can be called from any other &mdash; no account there,
-nothing arranged in advance.
-</section>
-
 {%- comment -%}
   A definition list rather than a bulleted list: the theme draws list markers as an
   absolutely positioned `::before` at a negative margin, which under centred text hangs
@@ -88,9 +80,9 @@ out exact.</dd>
 
 <div>
 <dt>A market of capabilities</dt>
-<dd>Public actions are found by natural-language search across every node. Each result
-carries its typed interface and one advertised price, which funds the whole composed work
-behind it.</dd>
+<dd>Public actions are found by natural-language search across every node, and called
+from your own balance &mdash; no account anywhere else. Each result carries its typed
+interface and one advertised price.</dd>
 </div>
 
 <div>

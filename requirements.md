@@ -82,6 +82,8 @@ manual can change without a commit to this repository.
 
 ```
 index.md                  landing page
+why.md sponsor.md         site pages (D9)
+contact.md
 manuals.yml               manuals to pull
 _config.yml               site configuration; one block per manual under
                           collections, defaults and just_the_docs.collections
@@ -146,6 +148,15 @@ D8. The landing page's hero is an inline SVG animated by
 `assets/js/juice-masthead.js`. The markup ships the final state, so the masthead is
 visible with JavaScript disabled (2.7); the script clears it on its first frame and
 restores it under `prefers-reduced-motion`.
+
+D9. A site page other than the landing page is a Markdown file at the repository
+root carrying `layout: minimal`, an explicit directory `permalink`, and
+`nav_exclude: true`. It reuses the landing page's styles through
+`class="juice-landing juice-page"`. The directory permalink is served as
+`index.html` and needs no host redirect; D3 does not apply, because site pages
+carry no relative links written with an extension. `nav_exclude` keeps them out of
+a manual's sidebar, which is that manual's namespace (D2). They are reached from
+the footer, which is shared with the manual.
 
 ## 7. Notes for editors
 
