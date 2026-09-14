@@ -27,3 +27,35 @@ $juice-logotype-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
 // -4 units at the wordmark's font-size of 74, expressed so it holds at any size.
 $juice-logotype-tracking: -0.054em;
 $juice-logotype-weight: 600;
+
+
+// JetBrains Mono, served from this site rather than from Google.
+//
+// The stylesheet Google serves is a render-blocking <link> in the head, so a
+// browser that cannot reach fonts.googleapis.com paints nothing at all until
+// the request resolves or times out — measured here as a blank page for the
+// full 40s a navigation will wait. Self-hosted, the faces are ordinary assets
+// on this origin, cached and revalidated with everything else, and the page
+// paints whether or not anything third-party answers.
+//
+// Two files, the Latin subsets of the same variable faces Google serves: the
+// upright carries every weight from 300 to 700 in one file, and the italic
+// covers the one weight this site sets in italic. Latin includes U+2000-206F,
+// so the em dashes are there. Paths are relative to the compiled stylesheet in
+// assets/css/, which keeps them correct under the project's base path without
+// Liquid, which does not run in _sass.
+@font-face {
+  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 300 700;
+  src: url("../fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/jetbrains-mono-latin-italic.woff2") format("woff2");
+}
