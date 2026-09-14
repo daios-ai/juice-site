@@ -50,6 +50,17 @@ jobs:
           BASEURL: /juice-web
         run: python3 script/check-site _site
 
+      # Keeps a failed build inspectable: the Pages artifact below is only
+      # uploaded on success, so without this a check failure leaves nothing to
+      # look at.
+      - name: Upload the built site for debugging
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-debug
+          path: _site
+          retention-days: 5
+
       - uses: actions/upload-pages-artifact@v3
 
   deploy:

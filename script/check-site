@@ -30,6 +30,8 @@ REQUIRED = [
     "juice/operating/index.html",
     "juice/reference/index.html",
 ]
+# The `name` of the collection in _config.yml, as rendered in the sidebar.
+NAV_CATEGORY = "Juice manual"
 EXPECTED_NAV = [
     "Introduction",
     "Getting started",
@@ -44,16 +46,30 @@ PRIVATE_LINK_RE = re.compile(r"https://github\.com/[^/\s\"']+/[^/\s\"']+/blob/")
 
 
 class Links(HTMLParser):
-    """Collect internal link targets, element ids, and sidebar nav text."""
+    """Collect internal link targets, element ids, and sidebar nav text.
+
+    The sidebar entries wanted are the top-level pages of one collection. Just
+    the Docs renders a collection as a `div.nav-category` holding its name,
+    followed by the `ul.nav-list` of its pages; with `nav_fold` that pair sits
+    inside an outer `ul.nav-category-list`, so the pages are one level deeper
+    than an unfolded collection's. Anchoring on the category heading and
+    capturing links at exactly the depth of the list that follows it handles
+    both, and keeps child pages out.
+    """
 
     ATTRS = {"a": "href", "link": "href", "img": "src", "script": "src"}
 
-    def __init__(self):
+    def __init__(self, category=None):
         super().__init__(convert_charrefs=True)
         self.refs = []          # (url, tag)
         self.ids = set()
-        self.nav = []           # text of top-level sidebar links
-        self._depth = 0         # >0 while inside the nav list
+        self.nav = []           # text of the category's top-level links
+        self._category = category
+        self._depth = 0         # open ul.nav-list elements
+        self._in_cat_div = False
+        self._cat_buf = []
+        self._armed = False     # category seen, waiting for its page list
+        self._cap_depth = None  # depth at which its top-level links sit
         self._nav_a = False
         self._buf = []
 
@@ -67,12 +83,24 @@ class Links(HTMLParser):
         classes = (a.get("class") or "").split()
         if tag == "ul" and "nav-list" in classes:
             self._depth += 1
-        elif self._depth == 1 and tag == "a" and "nav-list-link" in classes:
+            if self._armed:
+                self._armed, self._cap_depth = False, self._depth
+        elif tag == "div" and "nav-category" in classes:
+            self._in_cat_div, self._cat_buf = True, []
+        elif tag == "a" and "nav-list-link" in classes \
+                and self._cap_depth == self._depth:
             self._nav_a, self._buf = True, []
 
     def handle_endtag(self, tag):
         if tag == "ul" and self._depth:
+            if self._cap_depth == self._depth:
+                self._cap_depth = None      # the category's list has closed
             self._depth -= 1
+        elif tag == "div" and self._in_cat_div:
+            self._in_cat_div = False
+            name = " ".join("".join(self._cat_buf).split())
+            if self._category is None or name == self._category:
+                self._armed = True
         elif tag == "a" and self._nav_a:
             self._nav_a = False
             text = " ".join("".join(self._buf).split())
@@ -80,12 +108,14 @@ class Links(HTMLParser):
                 self.nav.append(text)
 
     def handle_data(self, data):
-        if self._nav_a:
+        if self._in_cat_div:
+            self._cat_buf.append(data)
+        elif self._nav_a:
             self._buf.append(data)
 
 
-def parse(path):
-    p = Links()
+def parse(path, category=None):
+    p = Links(category)
     p.feed(path.read_text(encoding="utf-8", errors="replace"))
     return p
 
@@ -138,8 +168,9 @@ def main(argv):
         errors.append(f"homepage has no link to {want} "
                       f"(is the link going through the relative_url filter?)")
 
-    # 2. Sidebar order on the manual index.
-    nav = parsed[site / "juice" / "index.html"].nav
+    # 2. Sidebar order on the manual index. Parsed separately because this one
+    #    needs the collection name to locate the right category.
+    nav = parse(site / "juice" / "index.html", NAV_CATEGORY).nav
     missing = [t for t in EXPECTED_NAV if t not in nav]
     if missing:
         errors.append(f"sidebar is missing: {', '.join(missing)}")
