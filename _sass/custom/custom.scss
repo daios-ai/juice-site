@@ -187,3 +187,35 @@
     color: #fff;
   }
 }
+
+// Sizing.
+//
+// The theme sets the root to 14px on phones and 16px above that, which reads
+// small in a monospace face where every glyph carries the narrower advance
+// width of the grid. Everything in the theme is expressed in rem, so raising
+// the root scales the page as one piece rather than pulling type away from the
+// spacing around it.
+html {
+  font-size: 1rem !important;
+
+  @include mq(sm) {
+    font-size: 1.125rem !important;
+  }
+}
+
+// The theme renders code at 0.75em, a quarter smaller than the prose it sits
+// in, which is visible mid-sentence and worse in a fenced block. The reference
+// sets 92.5%, near enough to parity that a command and the sentence describing
+// it read as one size.
+// Source: omacom/omarchy-site at 9832321, assets/css/manual.css.
+code {
+  font-size: 0.925em;
+}
+
+.main-content {
+  .highlight,
+  pre.highlight,
+  figure.highlight {
+    line-height: 1.5;
+  }
+}
