@@ -1,0 +1,56 @@
+title: Juice
+description: Callable actions, priced and settled per call.
+
+url: https://daios-ai.github.io
+baseurl: /juice-web          # project site path; drop when a custom domain is added
+
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+plugins:
+  - jekyll-remote-theme
+
+logo: /assets/juice-logo.svg
+search_enabled: true
+heading_anchors: true
+nav_sort: case_insensitive
+color_scheme: light
+
+aux_links:
+  GitHub:
+    - https://github.com/daios-ai
+
+# One collection per manual. Each is a separate navigation namespace, so the
+# nav_order and parent values of different manuals never collide.
+#
+# permalink uses an explicit :output_ext so a page's URL is ".../running.html",
+# matching both the file Jekyll writes and the relative links inside the
+# manuals. Without it the URLs are extensionless and navigation and search
+# would depend on the host redirecting.
+collections:
+  juice:
+    output: true
+    permalink: /:collection/:path:output_ext
+
+# Manual pages carry no `layout` in their front matter. GitHub Pages would
+# guess one via jekyll-default-layout; declaring it keeps local and CI builds
+# identical.
+defaults:
+  - scope:
+      path: ""
+      type: juice
+    values:
+      layout: default
+
+just_the_docs:
+  collections:
+    juice:
+      name: Juice manual
+      nav_fold: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - script
+  - manuals.yml
+  - README.md
+  - node_modules

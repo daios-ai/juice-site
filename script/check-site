@@ -1,0 +1,223 @@
+#!/usr/bin/env python3
+"""Verify a built Jekyll site before it is deployed.
+
+A green Jekyll build only proves the pages compiled. It does not prove that the
+navigation, the cross-page links inside an imported manual, or the search index
+actually resolve, and those are exactly what break when a permalink or a
+baseurl is wrong. This checks the rendered output instead.
+
+Usage: BASEURL=/juice-web python3 script/check-site _site
+"""
+
+import json
+import os
+import re
+import sys
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import unquote, urldefrag, urlparse
+
+# Pages that must exist, and the sidebar the manual must produce.
+REQUIRED = [
+    "index.html",
+    "juice/index.html",
+    "juice/getting-started.html",
+    "juice/concepts.html",
+    "juice/programs.html",
+    "juice/calling/index.html",
+    "juice/calling/running.html",
+    "juice/providing/index.html",
+    "juice/operating/index.html",
+    "juice/reference/index.html",
+]
+EXPECTED_NAV = [
+    "Introduction",
+    "Getting started",
+    "Concepts",
+    "Calling actions",
+    "Providing actions",
+    "Using Juice from a program",
+    "Operating a kernel",
+    "Reference",
+]
+PRIVATE_LINK_RE = re.compile(r"https://github\.com/[^/\s\"']+/[^/\s\"']+/blob/")
+
+
+class Links(HTMLParser):
+    """Collect internal link targets, element ids, and sidebar nav text."""
+
+    ATTRS = {"a": "href", "link": "href", "img": "src", "script": "src"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.refs = []          # (url, tag)
+        self.ids = set()
+        self.nav = []           # text of top-level sidebar links
+        self._depth = 0         # >0 while inside the nav list
+        self._nav_a = False
+        self._buf = []
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if a.get("id"):
+            self.ids.add(a["id"])
+        attr = self.ATTRS.get(tag)
+        if attr and a.get(attr):
+            self.refs.append((a[attr], tag))
+        classes = (a.get("class") or "").split()
+        if tag == "ul" and "nav-list" in classes:
+            self._depth += 1
+        elif self._depth == 1 and tag == "a" and "nav-list-link" in classes:
+            self._nav_a, self._buf = True, []
+
+    def handle_endtag(self, tag):
+        if tag == "ul" and self._depth:
+            self._depth -= 1
+        elif tag == "a" and self._nav_a:
+            self._nav_a = False
+            text = " ".join("".join(self._buf).split())
+            if text:
+                self.nav.append(text)
+
+    def handle_data(self, data):
+        if self._nav_a:
+            self._buf.append(data)
+
+
+def parse(path):
+    p = Links()
+    p.feed(path.read_text(encoding="utf-8", errors="replace"))
+    return p
+
+
+def to_path(url, site, baseurl):
+    """Map an internal URL to the file it should resolve to, or None to skip."""
+    u = urlparse(url)
+    if u.scheme or u.netloc:
+        return None                      # external
+    path = unquote(u.path)
+    if not path:
+        return None                      # pure fragment
+    if not path.startswith("/"):
+        return "RELATIVE"                # resolved by the caller
+    if baseurl and (path == baseurl or path.startswith(baseurl + "/")):
+        path = path[len(baseurl):] or "/"
+    elif baseurl:
+        return "OUTSIDE"                 # absolute link that ignores baseurl
+    rel = path.lstrip("/")
+    if not rel or rel.endswith("/"):
+        rel += "index.html"
+    return site / rel
+
+
+def main(argv):
+    site = Path(argv[1] if len(argv) > 1 else "_site").resolve()
+    baseurl = os.environ.get("BASEURL", "").rstrip("/")
+    if not site.is_dir():
+        print(f"check-site: {site} is not a directory", file=sys.stderr)
+        return 1
+
+    errors, warnings = [], []
+
+    for rel in REQUIRED:
+        if not (site / rel).is_file():
+            errors.append(f"missing page: {rel}")
+    if errors:
+        for e in errors:
+            print(f"  FAIL {e}")
+        print(f"check-site: {len(errors)} required page(s) missing", file=sys.stderr)
+        return 1
+
+    pages = sorted(site.rglob("*.html"))
+    parsed = {p: parse(p) for p in pages}
+
+    # 1. Homepage links to the manual, through baseurl.
+    home = parsed[site / "index.html"]
+    want = f"{baseurl}/juice/"
+    if not any(h.rstrip() in (want, want + "index.html") for h, _ in home.refs):
+        errors.append(f"homepage has no link to {want} "
+                      f"(is the link going through the relative_url filter?)")
+
+    # 2. Sidebar order on the manual index.
+    nav = parsed[site / "juice" / "index.html"].nav
+    missing = [t for t in EXPECTED_NAV if t not in nav]
+    if missing:
+        errors.append(f"sidebar is missing: {', '.join(missing)}")
+    else:
+        got = [t for t in nav if t in EXPECTED_NAV]
+        if got != EXPECTED_NAV:
+            errors.append(f"sidebar order is {got}, expected {EXPECTED_NAV}")
+
+    # 3. Every internal link and asset resolves; every fragment exists.
+    for page in pages:
+        rel_page = page.relative_to(site)
+        for url, tag in parsed[page].refs:
+            base, frag = urldefrag(url)
+            target = to_path(base, site, baseurl)
+            if target is None:
+                continue
+            if target == "OUTSIDE":
+                errors.append(f"{rel_page}: absolute link ignores baseurl: {url}")
+                continue
+            if target == "RELATIVE":
+                cand = (page.parent / unquote(base)).resolve()
+                if cand.is_dir():
+                    cand = cand / "index.html"
+                target = cand
+            if not target.is_file():
+                errors.append(f"{rel_page}: broken {tag} link: {url}")
+                continue
+            if frag and target.suffix == ".html":
+                if frag not in parsed.setdefault(target, parse(target)).ids:
+                    errors.append(f"{rel_page}: missing anchor #{frag} in "
+                                  f"{target.relative_to(site)}")
+
+    # 4. Search index resolves and carries extensions.
+    search = site / "assets" / "js" / "search-data.json"
+    if not search.is_file():
+        errors.append("search index missing: assets/js/search-data.json "
+                      "(search_enabled is on)")
+    else:
+        try:
+            data = json.loads(search.read_text(encoding="utf-8"))
+        except ValueError as e:
+            errors.append(f"search index is not valid JSON: {e}")
+            data = {}
+        checked = 0
+        for item in (data.values() if isinstance(data, dict) else data):
+            url = (item or {}).get("url") or ""
+            base, _ = urldefrag(url)
+            if not base:
+                continue
+            target = to_path(base, site, baseurl)
+            if target in (None, "OUTSIDE", "RELATIVE"):
+                errors.append(f"search index entry does not resolve: {url}")
+                continue
+            if not target.is_file():
+                errors.append(f"search index points at a missing page: {url}")
+            checked += 1
+        if not checked:
+            errors.append("search index has no usable entries")
+
+    # 5. Report blob links, which 404 while the source repo is private.
+    blob = sum(len(PRIVATE_LINK_RE.findall(p.read_text(encoding="utf-8", errors="replace")))
+               for p in pages)
+    if blob:
+        warnings.append(f"{blob} link(s) point at github.com blob URLs; these 404 "
+                        f"for visitors while the source repository is private")
+
+    for w in warnings:
+        print(f"  WARN {w}")
+    if errors:
+        for e in errors[:40]:
+            print(f"  FAIL {e}")
+        if len(errors) > 40:
+            print(f"  ... and {len(errors) - 40} more")
+        print(f"check-site: {len(errors)} problem(s) in {site}", file=sys.stderr)
+        return 1
+    print(f"check-site: OK, {len(pages)} page(s) checked in {site}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

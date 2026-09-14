@@ -1,0 +1,26 @@
+# Manuals pulled into the site at build time.
+#
+# Each entry is fetched from its own repository by script/fetch-manuals and
+# materialised as the Jekyll collection `_<name>`, served under /<name>/.
+# The manuals stay the source of truth in their own repos; nothing here is
+# committed to this repository (see .gitignore).
+#
+# To add a manual:
+#   1. add an entry below
+#   2. add matching blocks in _config.yml under `collections`, `defaults`
+#      and `just_the_docs.collections`
+#   3. add `_<name>/` to .gitignore
+#
+# Fields:
+#   name   collection name; must match ^[a-z][a-z0-9-]*$
+#   title  human name, shown as the sidebar section heading
+#   repo   owner/repo on github.com
+#   ref    branch, tag or commit to pull from
+#   path   directory inside that repo holding the manual
+
+manuals:
+  - name: juice
+    title: Juice manual
+    repo: daios-ai/juice
+    ref: master
+    path: manual

@@ -1,0 +1,63 @@
+name: Build and deploy site
+
+# The manuals live in other repositories, so the site is rebuilt on a schedule
+# and on demand as well as on push. Fetching them needs MANUALS_TOKEN: a
+# fine-grained token with Contents: read on those repositories, stored as an
+# Actions secret in this repository.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install fetch dependencies
+        run: python3 -m pip install --quiet pyyaml
+
+      - name: Fetch manuals
+        env:
+          MANUALS_TOKEN: ${{ secrets.MANUALS_TOKEN }}
+        run: python3 script/fetch-manuals
+
+      - uses: actions/configure-pages@v5
+
+      # Ships the gem set GitHub Pages supports, which includes
+      # jekyll-remote-theme. No Gemfile needed here; the Gemfile in the repo is
+      # only for local builds.
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Check the built site
+        env:
+          BASEURL: /juice-web
+        run: python3 script/check-site _site
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
