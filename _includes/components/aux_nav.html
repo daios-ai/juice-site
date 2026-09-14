@@ -1,9 +1,20 @@
+{%- comment -%}
+  Overrides the theme's version so a site-relative aux_link picks up the base
+  path. The theme prints the value verbatim, which sends "/juice/" above the
+  site root on a project site.
+
+  Each aux_links value is a list, so take its first entry rather than the list
+  itself: piping the list to a URL filter yields its inspected form and fails
+  the build. A value containing "//" already carries a scheme, or is
+  protocol-relative, and is left alone.
+{%- endcomment -%}
 <nav aria-label="Auxiliary" class="aux-nav">
   <ul class="aux-nav-list">
     {% for link in site.aux_links %}
+      {% assign aux_url = link.last | first %}
       <li class="aux-nav-list-item">
         <a
-          href="{% if link.last contains '://' %}{{ link.last }}{% else %}{{ link.last | relative_url }}{% endif %}"
+          href="{% if aux_url contains '//' %}{{ aux_url }}{% else %}{{ aux_url | relative_url }}{% endif %}"
           class="site-button"
           {% if site.aux_links_new_tab %}
           target="_blank" rel="noopener noreferrer"
