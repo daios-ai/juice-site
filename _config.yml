@@ -14,9 +14,18 @@ heading_anchors: true
 nav_sort: case_insensitive
 color_scheme: tokyonight     # _sass/color_schemes/tokyonight.scss
 
+# Rendered by _includes/components/aux_nav.html, which applies the base path to
+# site-relative entries. External links need the scheme.
 aux_links:
+  Manual:
+    - /juice/
+  DAIOS:
+    - https://daios.ai
   GitHub:
     - https://github.com/daios-ai
+
+back_to_top: true
+back_to_top_text: "Back to top"
 
 # One collection per manual. Each is a separate navigation namespace, so the
 # nav_order and parent values of different manuals never collide.

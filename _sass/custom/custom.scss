@@ -111,3 +111,79 @@
   background: rgba($tn-terminal-blue, 0.35);
   color: #fff;
 }
+
+// Header links and footer, following the reference's treatment: uppercase and
+// letterspaced, terminal blue resolving to white, separated by a rule rather
+// than a fill.
+// Source: omacom/omarchy-site at 9832321, assets/css/footer.css and
+// assets/css/button.css.
+
+.aux-nav .aux-nav-list-item .site-button {
+  color: $tn-terminal-blue;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+    background-image: none;
+  }
+}
+
+.juice-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+}
+
+.juice-footer__line {
+  color: rgba($tn-terminal-white, 0.6);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.juice-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5ch;
+
+  a {
+    color: $tn-terminal-blue;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+// Sits in the sidebar on desktop and under the content on phones, where the
+// theme would otherwise credit itself.
+.juice-nav-footer {
+  color: rgba($tn-terminal-white, 0.6);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+#back-to-top {
+  color: $tn-terminal-blue;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #fff;
+  }
+}
