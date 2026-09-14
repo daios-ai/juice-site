@@ -57,16 +57,29 @@ and leaves a signed receipt, so both sides can always prove what happened and wh
 cost.
 </section>
 
-<section class="juice-section juice-section--wide" markdown="1">
+{%- comment -%}
+  Written as HTML, unlike the prose sections. A kramdown table inside an element
+  carrying `markdown="1"` is not recognised: the rows come through as one
+  paragraph and the `|---|` separator is typographed into em dashes. The rows
+  are static, so the markup costs little and cannot fail that way.
+  `_layouts/table_wrappers.html` still wraps it, since that layout rewrites every
+  `<table` in the rendered page.
+{%- endcomment -%}
+<section class="juice-section juice-section--wide">
 <h2>Manuals</h2>
 
-| Component | What it is | Manual |
-|---|---|---|
-| Juice kernel | Accounts, actions, execution, settlement, federation | [Juice manual]({{ '/juice/' | relative_url }}) |
-| Juice UI | Building and running Juice apps | coming soon |
-| Juice rail | Money rail and on-chain settlement | coming soon |
-| Juice agent | Agent-side integration | coming soon |
-| Juice services | Services published on the network | coming soon |
+<table>
+<thead>
+<tr><th>Component</th><th>What it is</th><th>Manual</th></tr>
+</thead>
+<tbody>
+<tr><td>Juice kernel</td><td>Accounts, actions, execution, settlement, federation</td><td><a href="{{ '/juice/' | relative_url }}">Juice manual</a></td></tr>
+<tr><td>Juice UI</td><td>Building and running Juice apps</td><td>coming soon</td></tr>
+<tr><td>Juice rail</td><td>Money rail and on-chain settlement</td><td>coming soon</td></tr>
+<tr><td>Juice agent</td><td>Agent-side integration</td><td>coming soon</td></tr>
+<tr><td>Juice services</td><td>Services published on the network</td><td>coming soon</td></tr>
+</tbody>
+</table>
 </section>
 
 <section class="juice-section" markdown="1">
