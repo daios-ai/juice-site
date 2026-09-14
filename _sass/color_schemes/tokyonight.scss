@@ -1,0 +1,45 @@
+// Tokyo Night, after the pre-September 2026 Omarchy site (omacom/omarchy-site,
+// assets/css/root.css at 9832321). Same palette, same single typeface.
+//
+// Values are taken from that file's --rgb-* tokens rather than from a Tokyo
+// Night distribution, so the site matches the reference and not a variant.
+
+$color-scheme: dark;
+
+$tn-night: #1a1b26; // --rgb-background-night
+$tn-storm: #24283b; // --rgb-background-storm
+$tn-terminal-black: #414868; // --rgb-terminal-black
+$tn-terminal-white: #c0caf5; // --rgb-terminal-white
+$tn-terminal-blue: #7aa2f7; // --rgb-terminal-blue
+$tn-terminal-cyan: #7dcfff; // --rgb-terminal-cyan
+$tn-turquoise: #b4f9f8; // --rgb-turquoise
+$tn-green: #9ece6a; // --rgb-green
+
+// Surfaces. Omarchy runs one ground the whole width, so the sidebar takes the
+// page colour and is separated by a rule rather than a fill.
+$body-background-color: $tn-night;
+$sidebar-color: $tn-night;
+$search-background-color: $tn-night;
+$table-background-color: $tn-storm;
+$code-background-color: $tn-storm;
+$base-button-color: $tn-storm;
+$feedback-color: $tn-storm;
+$border-color: rgba($tn-terminal-black, 0.8);
+
+// Text. Headings sit at full white above terminal-white body copy, which is
+// what gives the reference its contrast without a second hue.
+$body-heading-color: #fff;
+$body-text-color: $tn-terminal-white;
+$link-color: $tn-terminal-blue;
+$nav-child-link-color: $tn-terminal-white;
+$btn-primary-color: $tn-terminal-blue;
+$code-linenumber-color: $tn-terminal-white;
+$search-result-preview-color: rgba($tn-terminal-white, 0.7);
+
+// One typeface for everything, as on Omarchy.
+$body-font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$mono-font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$body-line-height: 1.4;
+$content-line-height: 1.6;
+
+@import "./vendor/accessible-pygments/github-dark";

@@ -12,7 +12,7 @@ logo: /assets/juice-logo.svg
 search_enabled: true
 heading_anchors: true
 nav_sort: case_insensitive
-color_scheme: light
+color_scheme: tokyonight     # _sass/color_schemes/tokyonight.scss
 
 aux_links:
   GitHub:

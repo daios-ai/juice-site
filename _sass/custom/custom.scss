@@ -1,0 +1,113 @@
+// Details carried over from the pre-September Omarchy site: the green
+// leading-zero chapter numbers, green list markers, turquoise inline code, and
+// the uppercase letterspaced section label.
+// Source: omacom/omarchy-site at 9832321, assets/css/manual.css and
+// assets/css/foundation.css.
+
+// Omarchy numbers its chapters 01, 02, 03 in green down the sidebar. Just the
+// Docs renders a collection as a `.nav-category` heading followed by the list
+// of its top-level pages, so the counter goes on that list and children, which
+// sit in nested lists, stay unnumbered.
+.nav-category + .nav-list {
+  counter-reset: chapter;
+}
+
+.nav-category + .nav-list > .nav-list-item {
+  counter-increment: chapter;
+}
+
+.nav-category + .nav-list > .nav-list-item > .nav-list-link::before {
+  content: counter(chapter, decimal-leading-zero);
+  color: $tn-green;
+  margin-right: 1ch;
+  font-weight: 400;
+}
+
+// The collection heading, styled like Omarchy's section headings.
+.nav-category {
+  color: $tn-terminal-white;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  font-weight: 700;
+}
+
+// Current page in white and bold, the rest in terminal blue.
+.nav-list .nav-list-item .nav-list-link {
+  color: $tn-terminal-blue;
+  font-weight: 300;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.active {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.main-content {
+  // Inline code is turquoise on a translucent slab; fenced blocks keep the
+  // storm background and the reference's rounding.
+  code {
+    background-color: rgba($tn-terminal-black, 0.5);
+    border-radius: 0.3em;
+    color: $tn-turquoise;
+    padding: 0.125em 0.4em;
+  }
+
+  pre.highlight,
+  div.highlighter-rouge,
+  figure.highlight {
+    border-radius: 0.5em;
+  }
+
+  pre code,
+  .highlight code {
+    background: none;
+    border-radius: 0;
+    color: $tn-terminal-white;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  li::marker {
+    color: $tn-green;
+  }
+
+  blockquote {
+    border-left: 0.25em solid $tn-terminal-black;
+    color: $tn-terminal-blue;
+    padding-left: 1em;
+  }
+
+  // Heading anchors appear on hover, in cyan, as on the reference.
+  .anchor-heading svg {
+    fill: $tn-terminal-cyan;
+  }
+
+  table {
+    th,
+    td {
+      border: 1px solid rgba($tn-terminal-black, 0.8);
+    }
+
+    th {
+      color: #fff;
+    }
+  }
+}
+
+::selection {
+  background: rgba($tn-terminal-blue, 0.35);
+  color: #fff;
+}
