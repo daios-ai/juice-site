@@ -156,7 +156,8 @@ root carrying `layout: minimal`, an explicit directory `permalink`, and
 `index.html` and needs no host redirect; D3 does not apply, because site pages
 carry no relative links written with an extension. `nav_exclude` keeps them out of
 a manual's sidebar, which is that manual's namespace (D2). They are reached from
-the footer, which is shared with the manual.
+the footer, which is shared with the manual, and each carries the linked logotype
+that the omitted sidebar would otherwise provide.
 
 ## 7. Notes for editors
 

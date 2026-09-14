@@ -8,6 +8,8 @@ nav_exclude: true
 
 <div class="juice-landing juice-page" markdown="1">
 
+<a class="juice-home" href="{{ '/' | relative_url }}" aria-label="Juice home">{% include title.html %}</a>
+
 <h1 class="juice-pitch">Why Juice</h1>
 
 <section class="juice-section" markdown="1">

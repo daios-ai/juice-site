@@ -321,13 +321,35 @@ code {
     margin-top: var(--juice-space-medium);
   }
 
-  // A page with no hero starts at its title, which would otherwise sit one em
+  // A page with no hero starts at its logotype, which would otherwise sit one em
   // under the header rule. It takes the measure the hero has.
   &.juice-page {
     padding-top: var(--juice-space-xx-large);
 
     .juice-pitch {
-      margin-top: 0;
+      margin-top: var(--juice-space-large);
+    }
+  }
+
+  // The route home. The sidebar's linked logotype is the usual one, and the
+  // minimal layout omits the sidebar; below the md breakpoint these pages have
+  // no header either, so without this a reader has no way back except the
+  // footer. Reuses the sidebar's own mark and name, so the two read alike.
+  .juice-home {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.6em;
+    // `.main-content a` is overflow: hidden, which clips a flex child.
+    overflow: visible;
+    text-decoration: none;
+
+    .juice-mark {
+      transition: opacity var(--juice-transition);
+    }
+
+    &:hover .juice-mark,
+    &:focus-visible .juice-mark {
+      opacity: 0.8;
     }
   }
 
