@@ -51,10 +51,9 @@ is the software that runs a node of this network, as a web server runs a node of
 <section class="juice-section" markdown="1">
 <h2>The network</h2>
 
-Kernels are independently operated. An action one kernel marks public can be called from
-any other, from the caller's own balance, at a price advertised in advance &mdash; no
-account there, nothing arranged between the operators. A provider reaches the whole
-network by doing nothing beyond marking an action public.
+The network is independently operated nodes, each holding the actions it publishes.
+Anything public on one node can be called from any other &mdash; no account there,
+nothing arranged in advance.
 </section>
 
 {%- comment -%}
@@ -71,43 +70,55 @@ network by doing nothing beyond marking an action public.
 <dl class="juice-features">
 <div>
 <dt>Composable actions</dt>
-<dd>An action is typed and priced, and may call other actions within its own budget. Its
-owner sells the result as one thing at one advertised price, and the parties beneath are
-paid from it.</dd>
+<dd>An action is typed and priced, and may call other actions within its budget. Its owner
+sells the result as one thing at one advertised price; the parties beneath are paid from
+it.</dd>
 </div>
 
 <div>
 <dt>Delegated execution</dt>
-<dd>Like running a process, but on the network: a funded computation is handed off, may
-call other actions, may pause for one named person or agent, and resumes and settles when
-they answer.</dd>
+<dd>Like running a process, but on the network: a funded computation is handed off, may call
+other actions, may pause for a named person or agent, and settles when they answer.</dd>
 </div>
 
 <div>
 <dt>Blockchain micropayments</dt>
-<dd>Between kernels, every call settles on its own, on the network's chain. An obligation
-too small to pay economically is settled by a fair draw in Rivest's model: a fixed larger
-amount is paid with the probability that makes the expected payment exact, and neither
-side can choose the outcome.</dd>
+<dd>Between nodes, every call settles on chain. An obligation too small to pay economically is
+settled by a fair draw in Rivest's model: expected payment exact, and neither side can
+choose the outcome.</dd>
 </div>
 
 <div>
 <dt>A market of capabilities</dt>
-<dd>Public actions are found by natural-language search across independently operated
-kernels, each with its interface and one advertised price that funds the whole composed
-work.</dd>
+<dd>Public actions are found by natural-language search across every node. Each result
+carries its typed interface and one advertised price, which funds the whole composed work
+behind it.</dd>
 </div>
 
 <div>
-<dt>Traceability</dt>
+<dt>Traceable trade</dt>
 <dd>Every call records who paid, who asked and who was paid, and leaves a signed receipt
-either side can verify offline.</dd>
+verifiable offline. A rating rides with that receipt and crosses nodes as evidence, never
+an opaque score.</dd>
 </div>
 
 <div>
-<dt>Thick reputation</dt>
-<dd>Feedback is tied to real trade: a rating rides with the receipt of the call it judges,
-crosses kernels as verifiable evidence, and is never an opaque score.</dd>
+<dt>Runs anywhere</dt>
+<dd>One binary and one file. A node on a laptop behind a home router is a full member of the
+network: no public address, no port forwarding, nothing hosted.</dd>
+</div>
+
+<div>
+<dt>Your own model</dt>
+<dd>The node's language model is whichever you point it at, a local one by default. Search
+falls back to keywords without one, and nothing about money depends on which model you
+run.</dd>
+</div>
+
+<div>
+<dt>The web as it is</dt>
+<dd>An existing API joins by its OpenAPI document, one action per operation; an action is an
+HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 </div>
 </dl>
 </section>
