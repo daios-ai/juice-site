@@ -1,0 +1,17 @@
+// The Tokyo Night palette, taken from the pre-September 2026 Omarchy site
+// (omacom/omarchy-site at 9832321, assets/css/root.css --rgb-* tokens) rather
+// than from a Tokyo Night distribution, so the colours match the reference.
+//
+// These live here rather than in the colour scheme because the theme also
+// compiles its own light and dark stylesheets for scheme switching, and every
+// one of those imports this file. A palette defined only in the scheme is
+// undefined when those are built.
+
+$tn-night: #1a1b26; // --rgb-background-night
+$tn-storm: #24283b; // --rgb-background-storm
+$tn-terminal-black: #414868; // --rgb-terminal-black
+$tn-terminal-white: #c0caf5; // --rgb-terminal-white
+$tn-terminal-blue: #7aa2f7; // --rgb-terminal-blue
+$tn-terminal-cyan: #7dcfff; // --rgb-terminal-cyan
+$tn-turquoise: #b4f9f8; // --rgb-turquoise
+$tn-green: #9ece6a; // --rgb-green

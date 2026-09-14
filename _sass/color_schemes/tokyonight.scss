@@ -1,19 +1,10 @@
 // Tokyo Night, after the pre-September 2026 Omarchy site (omacom/omarchy-site,
 // assets/css/root.css at 9832321). Same palette, same single typeface.
 //
-// Values are taken from that file's --rgb-* tokens rather than from a Tokyo
-// Night distribution, so the site matches the reference and not a variant.
+// The $tn-* palette is defined in _sass/custom/setup.scss, which every variant
+// of the theme's stylesheets imports.
 
 $color-scheme: dark;
-
-$tn-night: #1a1b26; // --rgb-background-night
-$tn-storm: #24283b; // --rgb-background-storm
-$tn-terminal-black: #414868; // --rgb-terminal-black
-$tn-terminal-white: #c0caf5; // --rgb-terminal-white
-$tn-terminal-blue: #7aa2f7; // --rgb-terminal-blue
-$tn-terminal-cyan: #7dcfff; // --rgb-terminal-cyan
-$tn-turquoise: #b4f9f8; // --rgb-turquoise
-$tn-green: #9ece6a; // --rgb-green
 
 // Surfaces. Omarchy runs one ground the whole width, so the sidebar takes the
 // page colour and is separated by a rule rather than a fill.
