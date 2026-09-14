@@ -8,10 +8,11 @@
   animated per instance. The two are not identical: this copy drops the orange
   and yellow of the file version.
 
-  The scene ships parked, with the hero mark placed and the wordmark visible, so
-  the masthead is never a blank band when the script is blocked or still loading.
-  juice-masthead.js clears that on its first frame, and restores it if the
-  reader asks for reduced motion.
+  The wordmark is the prototype's element unchanged: its own text, face, size,
+  weight, tracking and position. The only edit is opacity, 1 rather than 0, so
+  that the scene ships parked and the masthead is never a blank band when the
+  script is blocked or still loading; juice-masthead.js sets it back to 0 on its
+  first frame and restores it if the reader asks for reduced motion.
 
   Indented one space per level on purpose. kramdown's list of block-level HTML
   elements does not include <svg>, and this include is spliced into a
@@ -30,8 +31,15 @@
   </defs>
   <g id="juice-swarm"></g>
   <use id="juice-hero-static" href="#juice-bee"
-   transform="translate(450 150) scale(4.65) translate(-14.6185 -15.8985)"/>
-  <text id="juice-wordmark" x="568" y="177" font-size="74" opacity="1">JUICE</text>
+   transform="translate(430 150) scale(4.65) translate(-14.6185 -15.8985)"/>
+ <text id="juice-wordmark"
+   x="548" y="174"
+   fill="#ffffff"
+   font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace"
+   font-size="74"
+   font-weight="600"
+   letter-spacing="-4"
+   opacity="1">Juice</text>
  </svg>
 </div>
 <script defer src="{{ '/assets/js/juice-masthead.js' | relative_url }}"></script>

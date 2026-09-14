@@ -8,9 +8,7 @@
 //
 // The scene is authored in fixed user units and never rebuilt for viewport
 // size: the SVG's own viewBox scaling does that, so the timing, the wobble
-// amplitudes and the parallax read the same at every width. The one measure
-// computed at runtime is the horizontal lockup of mark and wordmark, which
-// depends on font metrics rather than on layout.
+// amplitudes and the parallax read the same at every width.
 //
 // Adapted from the standalone prototype. The prototype's pause and replay
 // controls are gone; an IntersectionObserver stops the loop while the masthead
@@ -54,30 +52,10 @@
   const lerp = (a, b, t) => a + (b - a) * t;
   const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 
-  // The mark and the wordmark are centred as one lockup. The wordmark's width
-  // is only knowable once its face has loaded, and the stylesheet asks for it
-  // with display=swap, so this runs again when the font settles.
-  // getComputedTextLength() counts the letter-space after the final glyph,
-  // which would push the pair right; subtract one unit of it.
-  const VIEW_W = 1200;
-  const WORDMARK_SIZE = 74;
-  const MARK_W = 29.237 * 4.65;
-  const GAP = 50;
-  let heroX = 450;
+  // The prototype's own geometry, unchanged: the hero mark parks here and the
+  // wordmark sits beside it at the x its element carries.
+  const heroX = 430;
   const heroY = 150;
-
-  function layout() {
-    let textW;
-    try {
-      textW = wordmark.getComputedTextLength() - 0.075 * WORDMARK_SIZE;
-    } catch (e) {
-      return; // not rendered yet; the markup's own x is a sane default
-    }
-    if (!textW) return;
-    const left = (VIEW_W - (MARK_W + GAP + textW)) / 2;
-    heroX = left + MARK_W / 2;
-    wordmark.setAttribute('x', String(left + MARK_W + GAP));
-  }
 
   function placeBee(bee, x, y, scale, rotation, opacity) {
     bee.el.setAttribute(
@@ -161,14 +139,6 @@
   function stop() {
     running = false;
     cancelAnimationFrame(raf);
-  }
-
-  layout();
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => {
-      layout();
-      if (reducedMotion) showFinalState();
-    });
   }
 
   // The prototype shipped an empty swarm and a hidden wordmark, so a blocked
