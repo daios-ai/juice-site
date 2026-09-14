@@ -329,8 +329,12 @@ code {
     margin-top: var(--juice-space-large);
   }
 
+  // The reference puts 2.4em here, under a banner that is one line of title and
+  // one of subtext. Ours is a title, a lede and two rows of buttons, and at that
+  // measure the first section read as a coda to the banner rather than as the
+  // first of five. It takes the same 4em the ruled sections use.
   .juice-section {
-    margin-top: calc(var(--juice-space-large) * 1.2);
+    margin-top: var(--juice-space-xx-large);
   }
 
   // 4em of margin and 4em of padding puts the hairline midway between two
@@ -345,8 +349,12 @@ code {
     // With the wrap's own 2rem this is the reference's 4em at its widest step.
     padding-inline: var(--juice-space-large);
 
+    // Grows with the viewport, as the reference's masthead does. It had been
+    // shrinking: 4em at every other width and 3em here, the widest, which is the
+    // one place there is room for it. The band carries 76px of its own air above
+    // the parked mark, so this is not the whole measure the reader sees.
     .juice-hero {
-      margin-top: var(--juice-space-x-large);
+      margin-top: var(--juice-space-xx-large);
     }
   }
 }
@@ -448,7 +456,9 @@ code {
   // its own two-column grid with a colon after each term; both undone here.
   .juice-features {
     display: grid;
-    gap: var(--juice-space-neutral) var(--juice-space-x-large);
+    // Reading is row-major, so the wrap from one row to the next must not be the
+    // tightest gap in the block; it had been half the gap between the columns.
+    gap: var(--juice-space-large) var(--juice-space-x-large);
     grid-template-columns: minmax(0, 1fr);
     margin: 0;
     text-align: left;
