@@ -166,16 +166,6 @@
   }
 }
 
-// Sits in the sidebar on desktop and under the content on phones, where the
-// theme would otherwise credit itself.
-.juice-nav-footer {
-  color: rgba($tn-terminal-white, 0.6);
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin: 0;
-  text-wrap: pretty;
-}
-
 #back-to-top {
   color: $tn-terminal-blue;
   font-size: 0.75rem;
