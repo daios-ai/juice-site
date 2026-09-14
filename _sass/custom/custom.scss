@@ -377,21 +377,38 @@ code {
   // stylesheet gives it overflow: hidden), which is all the `slice` crop needs,
   // and clipping the box would cut the glow below at the band's edges.
 
-  // A faint glow behind the parked lockup, in the mark's own pink, so the air
-  // the band carries around the mark reads as a lit region rather than a void.
-  // `closest-side` sizes the ellipse to the nearest edge of this pseudo-element,
-  // so the gradient reaches transparent before any edge and is never cut into a
-  // rectangle. The box extends half the band's height above and below it; not
-  // sideways, which on a narrow viewport would widen the page. Centred at 45%
-  // because the lockup parks at 556 of the scene's 1200 units and the 3:1 crop
-  // shows 150 to 1050.
+  // Three soft radial gradients behind the hero, offset from one another and
+  // overlapping: the mark's pink high and left behind the hexagon, its magenta
+  // low and right past the wordmark, the palette's blue larger and fainter at
+  // the far right. One centred glow read as a spotlight under an asymmetric
+  // lockup; a dispersed field has no centre to disagree with.
+  //
+  // The box extends half the band's height above and below it, not sideways,
+  // which on a narrow viewport would widen the page. Each ellipse is sized and
+  // placed so that its full extent lies inside the box, so every layer reaches
+  // transparent before any edge and none is cut into a rectangle. Positions are
+  // in the box's own coordinates: the band occupies its middle half vertically,
+  // and the hexagon parks at 31% of the band's width, the wordmark 44% to 67%.
   &::before {
-    background: radial-gradient(
-      ellipse closest-side at 45% 50%,
-      rgba($juice-mark-pink, 0.11),
-      rgba($juice-mark-pink, 0.04) 45%,
-      transparent 100%
-    );
+    background:
+      radial-gradient(
+        32% 42% at 32% 44%,
+        rgba($juice-mark-pink, 0.12),
+        rgba($juice-mark-pink, 0.05) 45%,
+        transparent 100%
+      ),
+      radial-gradient(
+        30% 40% at 66% 58%,
+        rgba($juice-mark-magenta, 0.18),
+        rgba($juice-mark-magenta, 0.07) 45%,
+        transparent 100%
+      ),
+      radial-gradient(
+        20% 40% at 80% 40%,
+        rgba($tn-terminal-blue, 0.08),
+        rgba($tn-terminal-blue, 0.03) 45%,
+        transparent 100%
+      );
     content: "";
     inset: -50% 0;
     pointer-events: none;

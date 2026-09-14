@@ -28,9 +28,10 @@ $juice-logotype-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
 $juice-logotype-tracking: -0.054em;
 $juice-logotype-weight: 600;
 
-// The mark's own pink, as drawn in assets/juice-logo.svg and in the masthead's
-// <defs>. Used at low alpha for the glow behind the masthead.
+// The mark's own pink and magenta, as drawn in assets/juice-logo.svg and in the
+// hero's <defs>. Used at low alpha for the colour behind the hero.
 $juice-mark-pink: #ffaaee;
+$juice-mark-magenta: #aa0088;
 
 
 // JetBrains Mono, served from this site rather than from Google.
