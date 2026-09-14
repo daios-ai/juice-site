@@ -351,14 +351,16 @@ code {
   }
 }
 
-// The masthead. The scene is 4:1; giving the box that ratio lets the SVG scale
-// with nothing left over. Below about 800px the ratio would squeeze the marks
-// to nothing, so the height stops falling and `slice` crops instead. The box
-// is never wider than 4:1, so the crop can only ever take the left and right
-// ends of the flight path, where bees are entering and leaving; the full
-// height, and the lockup in the middle, are visible at every width.
+// The masthead. The scene is 4:1 but the box is 3:1, so `slice` crops 150 units
+// from each end and scales what remains up by a third. At the scene's own ratio
+// the parked lockup — the mark at 430 and the wordmark beside it — is 388 of
+// 1200 units, a third of a wide band, and reads small on a desktop while the
+// height floor below makes it two thirds of the band on a phone. Cropping to
+// 900 units closes most of that gap and costs only the ends of the flight path,
+// where the marks are entering and leaving; the lockup spans 362 to 750 and so
+// clears the crop at every width, as does the full height, which is never cut.
 .main-content .juice-landing .juice-hero {
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 3 / 1;
   min-height: 11rem;
   overflow: hidden;
 
@@ -433,6 +435,30 @@ code {
 
   .juice-section--wide {
     max-width: none;
+  }
+
+  // The feature list. A definition list rather than a bulleted one because the
+  // theme draws markers as an absolutely positioned `::before` at a negative
+  // margin, which hangs at an arbitrary distance from centred, ragged text.
+  // The term takes the heading treatment without the uppercase: it names a
+  // thing rather than labelling a section.
+  .juice-features {
+    margin: 0;
+    max-width: 40em;
+
+    dt {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    dd {
+      margin: 0.35em 0 0;
+      text-wrap: pretty;
+    }
+
+    dd + dt {
+      margin-top: var(--juice-space-neutral);
+    }
   }
 
   .juice-actions {

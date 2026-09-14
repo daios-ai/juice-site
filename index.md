@@ -35,9 +35,11 @@ has_toc: false
 
 <h1 class="juice-pitch">{{ site.description }}</h1>
 
-<p class="juice-lede">An action's <strong>price is the whole cost</strong>. Whatever it does
-internally &mdash; call other paid actions, wait for a human, reach across the network &mdash;
-you are never charged more than the price you saw.</p>
+<p class="juice-lede">A capability is something that can be done &mdash; computation,
+information, work &mdash; supplied by a service, a person or an agent, with an owner and a
+price. Juice publishes capabilities as <strong>actions</strong>: humans and agents discover
+them, call them, build new ones out of them, and are paid when theirs are used. The kernel
+is the software that runs a node of this network, as a web server runs a node of the web.</p>
 
 <nav class="juice-actions" aria-label="Primary">
 <a class="juice-button" href="{{ '/juice/' | relative_url }}">Manual</a>
@@ -47,14 +49,52 @@ you are never charged more than the price you saw.</p>
 </nav>
 
 <section class="juice-section" markdown="1">
-<h2>Callable actions</h2>
+<h2>The network</h2>
 
-Juice is a kernel for **callable actions**: named, priced, owned units of service. An
-action can be an HTTP endpoint, a WebAssembly module, a built-in, or another kernel's
-action reached over federation. Anyone can publish one, set a price, and get paid per
-use; anyone can find one, run it, and rate the result. Every call settles atomically
-and leaves a signed receipt, so both sides can always prove what happened and what it
-cost.
+Kernels are independently operated. An action one kernel marks public can be called from
+any other, from the caller's own balance, at a price advertised in advance &mdash; no
+account there, nothing arranged between the operators. A provider reaches the whole
+network by doing nothing beyond marking an action public.
+</section>
+
+{%- comment -%}
+  A definition list rather than a bulleted list: the theme draws list markers as an
+  absolutely positioned `::before` at a negative margin, which under centred text hangs
+  at an arbitrary distance from the ragged edge. A `dl` carries no marker.
+{%- endcomment -%}
+<section class="juice-section">
+<h2>What makes it different</h2>
+
+<dl class="juice-features">
+<dt>Composable actions</dt>
+<dd>An action is typed and priced, and may call other actions within its own budget. Its
+owner sells the result as one thing at one advertised price, and the parties beneath are
+paid from it.</dd>
+
+<dt>Delegated execution</dt>
+<dd>Like running a process, but on the network: a funded computation is handed off, may
+call other actions, may pause for one named person or agent, and resumes and settles when
+they answer.</dd>
+
+<dt>Blockchain micropayments</dt>
+<dd>Between kernels, every call settles on its own, on the network's chain. An obligation
+too small to pay economically is settled by a fair draw in Rivest's model: a fixed larger
+amount is paid with the probability that makes the expected payment exact, and neither
+side can choose the outcome.</dd>
+
+<dt>A market of capabilities</dt>
+<dd>Public actions are found by natural-language search across independently operated
+kernels, each with its interface and one advertised price that funds the whole composed
+work.</dd>
+
+<dt>Traceability</dt>
+<dd>Every call records who paid, who asked and who was paid, and leaves a signed receipt
+either side can verify offline.</dd>
+
+<dt>Thick reputation</dt>
+<dd>Feedback is tied to real trade: a rating rides with the receipt of the call it judges,
+crosses kernels as verifiable evidence, and is never an opaque score.</dd>
+</dl>
 </section>
 
 {%- comment -%}
