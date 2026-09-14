@@ -134,7 +134,8 @@ one variable upright (weights 300–700) and one italic, declared in `setup.scss
 
 D6. The palette and the landing page's structure follow `omacom/omarchy-site` at
 commit `9832321`. Stylesheet rules taken from that source cite the file they came
-from. No requirement in §2 depends on the appearance.
+from. The landing page adds one departure from that source: a radial glow behind the
+masthead in the mark's pink. No requirement in §2 depends on the appearance.
 
 D7. `check-site` and `fetch-manuals` are Python 3. `check-site` uses the standard
 library only; `fetch-manuals` additionally requires PyYAML. Both parse rendered or
