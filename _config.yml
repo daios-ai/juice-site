@@ -19,12 +19,6 @@ logo: /assets/juice-logo.svg
 # and Apple icons it has no notion of; those are in _includes/head_custom.html.
 favicon_ico: /assets/favicon.ico
 
-# The card a shared link shows. jekyll-seo-tag makes the path absolute against
-# `url`, which social platforms require. 1200x630 is the size they crop from.
-image: /assets/og.png
-twitter:
-  card: summary_large_image
-
 search_enabled: true
 heading_anchors: true
 nav_sort: case_insensitive
@@ -58,6 +52,16 @@ collections:
 # Manual pages carry no `layout` in their front matter. GitHub Pages would
 # guess one via jekyll-default-layout; declaring it keeps local and CI builds
 # identical.
+defaults:
+  # The card a shared link shows. jekyll-seo-tag reads `image` from a page's own
+  # front matter, never from the site, so it is set as a default on every page;
+  # it makes the path absolute against `url`, which the platforms require. With
+  # an image present the Twitter card becomes summary_large_image on its own.
+  - scope:
+      path: ""
+    values:
+      image: /assets/og.png
+
 defaults:
   - scope:
       path: ""
