@@ -1,5 +1,7 @@
 ---
 title: Home
+seo:
+  title: Juice
 layout: minimal
 nav_order: 1
 has_toc: false
