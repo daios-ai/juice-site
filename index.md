@@ -117,16 +117,15 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 </section>
 
 <section class="juice-section juice-section--wide" markdown="1">
-<h2>Bounded delegation</h2>
+<h2>Why Juice?</h2>
 
 MCP lets agents call tools. x402 lets them pay for services. Juice adds **bounded
 delegation**: an action can spend part of its price on other actions, which can do the
 same recursively.
 
 This matters for agents because the caller does not need to know the complete workflow
-or supply chain in advance. Each provider chooses its own suppliers, while the original
-budget constraint follows the execution tree &mdash; exactly within a node, and in
-expectation across the network.
+or supply chain in advance. Each provider can choose its own suppliers, while the
+original budget constraint follows the execution tree.
 
 ```text
 agent
