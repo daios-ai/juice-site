@@ -338,6 +338,9 @@ code {
   .juice-home {
     align-items: center;
     display: inline-flex;
+    // The name comes from the sidebar's include at the sidebar's size; scaled
+    // with the mark so the lockup holds its proportions here.
+    font-size: 140%;
     gap: 0.6em;
     // `.main-content a` is overflow: hidden, which clips a flex child.
     overflow: visible;
@@ -346,7 +349,7 @@ code {
     // Larger than the sidebar's, where the mark sits beside nav type. Here it
     // is the only thing above the title and must hold the top of the page.
     .juice-mark {
-      height: 2.25em;
+      height: 3.5em;
       transition: opacity var(--juice-transition);
     }
 
