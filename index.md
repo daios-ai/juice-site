@@ -122,14 +122,15 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
   a reader while the juice-ui manual is unwritten. It gains both together.
 {%- endcomment -%}
 <section class="juice-section juice-section--wide">
-<h2>The interface</h2>
+<h2>Juice UI</h2>
 
 <figure class="juice-shot">
 <img src="{{ '/assets/juice-ui.webp' | relative_url }}" width="1785" height="860"
-     alt="The juice-ui browser: a grid of action cards, each with its name, price,
-          description, success rate and latency.">
-<figcaption>juice-ui, one node's catalogue: every action named, priced, and rated
-by the people who called it. Still under development.</figcaption>
+     loading="lazy"
+     alt="A grid of action cards, each with a name, a price, a description, a
+          success rate and a latency, beside a sidebar and a search field.">
+<figcaption>A web interface to a kernel: everything you can do there, in a
+browser. Coming soon.</figcaption>
 </figure>
 </section>
 
@@ -150,7 +151,7 @@ by the people who called it. Still under development.</figcaption>
 </thead>
 <tbody>
 <tr><td>Juice kernel</td><td>Accounts, actions, execution, settlement, federation</td><td><a href="{{ '/juice/' | relative_url }}">Juice manual</a></td></tr>
-<tr><td>Juice UI</td><td>Building and running Juice apps</td><td>coming soon</td></tr>
+<tr><td>Juice UI</td><td>A web interface to a kernel</td><td>coming soon</td></tr>
 <tr><td>Juice rail</td><td>Money rail and on-chain settlement</td><td>coming soon</td></tr>
 <tr><td>Juice agent</td><td>Agent-side integration</td><td>coming soon</td></tr>
 <tr><td>Juice services</td><td>Services published on the network</td><td>coming soon</td></tr>
