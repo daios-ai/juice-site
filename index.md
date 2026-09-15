@@ -116,6 +116,43 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 </dl>
 </section>
 
+<section class="juice-section juice-section--wide" markdown="1">
+<h2>Bounded delegation</h2>
+
+MCP lets agents call tools. x402 lets them pay for services. Juice adds **bounded
+delegation**: an action can spend part of its price on other actions, which can do the
+same recursively.
+
+This matters for agents because the caller does not need to know the complete workflow
+or supply chain in advance. Each provider chooses its own suppliers, while the original
+budget constraint follows the execution tree &mdash; exactly within a node, and in
+expectation across the network.
+
+```text
+agent
+  │ $1.00
+  ▼
+action A
+  ├── $0.20 → action B
+  │              └── $0.05 → action D
+  ├── $0.15 → action C
+  └── remaining amount
+        ├── operator fee
+        └── provider margin
+```
+
+<table>
+<thead>
+<tr><th></th><th>MCP + APIs + x402</th><th>Juice</th></tr>
+</thead>
+<tbody>
+<tr><td>Call and pay for services</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Delegate a budget with a task</td><td>Application-defined</td><td>Native</td></tr>
+<tr><td>Preserve that budget through recursive delegation</td><td>Application-defined</td><td>Native</td></tr>
+</tbody>
+</table>
+</section>
+
 {%- comment -%}
   The image is not a link: the treatment the reference gives a linked image, a
   scale on hover, is feedback that it is clickable, and there is nowhere to send
