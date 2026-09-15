@@ -5,8 +5,8 @@ title: Juice
 # in type and in its aria-label. That heading is written out in index.md.
 description: Juice — an economic network of capabilities for humans and agents.
 
-url: https://daios-ai.github.io
-baseurl: /juice-site          # project site path; drop when a custom domain is added
+url: https://juiceos.org
+baseurl: ""                   # served at the domain root; see CNAME
 
 remote_theme: just-the-docs/just-the-docs@v0.12.0
 plugins:

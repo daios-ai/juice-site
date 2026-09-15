@@ -81,6 +81,7 @@ manual can change without a commit to this repository.
 ## 4. Layout
 
 ```
+CNAME                     the domain the site is served at
 index.md                  landing page
 why.md sponsor.md         site pages (D9)
 contact.md

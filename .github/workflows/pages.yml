@@ -47,7 +47,7 @@ jobs:
 
       - name: Check the built site
         env:
-          BASEURL: /juice-site
+          BASEURL: ""
         run: python3 script/check-site _site
 
       # Keeps a failed build inspectable: the Pages artifact below is only
