@@ -62,7 +62,6 @@ defaults:
     values:
       image: /assets/og.png
 
-defaults:
   - scope:
       path: ""
       type: juice
