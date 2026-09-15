@@ -511,6 +511,12 @@ code {
     }
   }
 
+  // The landing page centres its text, which a diagram cannot survive: each
+  // line is centred on its own and the branches stop lining up.
+  pre {
+    text-align: left;
+  }
+
   .juice-section {
     display: grid;
     gap: var(--juice-space-neutral);
