@@ -312,6 +312,28 @@ code {
 
   // The rhythm is per-element, as on the reference, rather than one grid gap:
   // masthead 4em, pitch 1em, lede 1.5em, buttons 2em.
+  // The beta notice. Deliberately not the button treatment: blue on night is
+  // this site's affirmative signal, and a warning that looks like a call to
+  // action misreads. A hairline and the label type the aux nav, the footer and
+  // back-to-top already share. Only the final phrase is a link, so the bar does
+  // not have to look clickable.
+  .juice-beta {
+    border: $border $border-color;
+    border-radius: 0.4em;
+    color: rgba($tn-terminal-white, 0.6);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.075em;
+    margin: 0;
+    max-width: none;
+    padding: 0.75em 1em;
+    text-transform: uppercase;
+
+    strong {
+      color: #fff;
+    }
+  }
+
   .juice-hero {
     margin-top: var(--juice-space-xx-large);
     max-width: none;

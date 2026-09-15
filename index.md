@@ -31,6 +31,9 @@ has_toc: false
 
 <div class="juice-landing" markdown="1">
 
+<p class="juice-beta"><strong>Beta.</strong> Run it at your own risk, and
+<a href="{{ '/contact/' | relative_url }}">tell us what breaks</a>.</p>
+
 {% include juice-masthead.html %}
 
 <h1 class="juice-pitch">An economic network of capabilities for humans and agents.</h1>
