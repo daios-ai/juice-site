@@ -19,12 +19,14 @@
 
 {%- comment -%}
   Cloudflare Web Analytics. The only resource this site loads from another
-  origin, and deferred, so it cannot delay rendering (requirements 2.8). It
+  origin. A module script, which is deferred by definition, so it cannot delay
+  rendering (requirements 2.8); it is also the form Cloudflare serves, and the
+  file may use module syntax. It
   sets no cookie, does not fingerprint, and does not identify a returning
   reader, which is why the site needs no consent dialogue; /privacy/ says so.
   Emitted only once a token is configured.
 {%- endcomment -%}
 {%- if site.cloudflare_analytics_token != "" -%}
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
         data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
 {%- endif -%}

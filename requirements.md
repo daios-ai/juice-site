@@ -153,7 +153,8 @@ restores it under `prefers-reduced-motion`.
 
 D10. Traffic is measured by Cloudflare Web Analytics, emitted by
 `_includes/head_custom.html` only when `cloudflare_analytics_token` is set in
-`_config.yml`. It is the site's only third-party resource and is deferred (2.8).
+`_config.yml`. It is the site's only third-party resource, loaded as a module
+script, which defers by definition (2.8).
 It sets no cookie and stores nothing on the device, so no consent dialogue is
 required; what it collects is stated at `/privacy/`.
 

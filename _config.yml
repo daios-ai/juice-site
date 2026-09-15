@@ -19,9 +19,10 @@ logo: /assets/juice-logo.svg
 # and Apple icons it has no notion of; those are in _includes/head_custom.html.
 favicon_ico: /assets/favicon.ico
 
-# Cloudflare Web Analytics. Empty until the site is created in the Cloudflare
-# dashboard; the beacon is emitted only when this holds a token (D10).
-cloudflare_analytics_token: ""
+# Cloudflare Web Analytics (D10). A site identifier, not a credential: it reaches
+# every reader's browser by necessity, grants no access to the account, and reads
+# no data. The beacon is emitted only when this holds a token.
+cloudflare_analytics_token: "83997c8298a047cf8b0a844a42c4c687"
 
 search_enabled: true
 heading_anchors: true
