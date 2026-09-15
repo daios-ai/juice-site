@@ -554,6 +554,32 @@ code {
     max-width: none;
   }
 
+  // A screenshot. Rounded and ruled like the fenced blocks and the table, so it
+  // sits as another object on the page rather than a window pasted onto it. No
+  // hover: the reference scales a linked image as feedback that it is
+  // clickable, and this one leads nowhere yet.
+  .juice-shot {
+    margin: 0;
+
+    img {
+      border: $border $border-color;
+      border-radius: 0.5em;
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+
+    figcaption {
+      color: rgba($tn-terminal-white, 0.6);
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: var(--juice-space-medium);
+      max-width: 40em;
+      margin-inline: auto;
+      text-wrap: pretty;
+    }
+  }
+
   // The feature list: six parallel items, so two columns on a wide screen rather
   // than one centred ribbon. The pairs are wrapped in divs so the grid places
   // pairs, not terms and definitions separately. The theme lays every dl out as

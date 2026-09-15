@@ -117,6 +117,23 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 </section>
 
 {%- comment -%}
+  The image is not a link: the treatment the reference gives a linked image, a
+  scale on hover, is feedback that it is clickable, and there is nowhere to send
+  a reader while the juice-ui manual is unwritten. It gains both together.
+{%- endcomment -%}
+<section class="juice-section juice-section--wide">
+<h2>The interface</h2>
+
+<figure class="juice-shot">
+<img src="{{ '/assets/juice-ui.webp' | relative_url }}" width="1785" height="860"
+     alt="The juice-ui browser: a grid of action cards, each with its name, price,
+          description, success rate and latency.">
+<figcaption>juice-ui, one node's catalogue: every action named, priced, and rated
+by the people who called it. Still under development.</figcaption>
+</figure>
+</section>
+
+{%- comment -%}
   Written as HTML, unlike the prose sections. A kramdown table inside an element
   carrying `markdown="1"` is not recognised: the rows come through as one
   paragraph and the `|---|` separator is typographed into em dashes. The rows
