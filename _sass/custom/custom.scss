@@ -343,7 +343,10 @@ code {
     overflow: visible;
     text-decoration: none;
 
+    // Larger than the sidebar's, where the mark sits beside nav type. Here it
+    // is the only thing above the title and must hold the top of the page.
     .juice-mark {
+      height: 2.75em;
       transition: opacity var(--juice-transition);
     }
 
