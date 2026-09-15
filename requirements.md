@@ -1,6 +1,6 @@
 # juice-site: requirements and structure
 
-Version: 0.2
+Version: 0.3
 Codename: `juice-site`
 
 INSTRUCTIONS FOR CHANGING THIS FILE:
@@ -47,8 +47,9 @@ the Pages artifact. A failing check stops the deploy.
 2.7 Page content is readable with JavaScript disabled. Search requires JavaScript;
 navigation does not.
 
-2.8 The site requests no resource from a host other than its own origin. Fonts,
-icons, scripts and stylesheets are served from `assets/`.
+2.8 No resource loaded from another origin may block rendering. Fonts, icons,
+scripts and stylesheets are served from `assets/`; a third-party resource is
+deferred or asynchronous.
 
 2.9 The token used to read a private source repository appears in no built page,
 log line, or committed file.
@@ -84,7 +85,7 @@ manual can change without a commit to this repository.
 CNAME                     the domain the site is served at
 index.md                  landing page
 why.md sponsor.md         site pages (D9)
-contact.md
+contact.md privacy.md
 manuals.yml               manuals to pull
 _config.yml               site configuration; one block per manual under
                           collections, defaults and just_the_docs.collections
@@ -149,6 +150,12 @@ D8. The landing page's hero is an inline SVG animated by
 `assets/js/juice-masthead.js`. The markup ships the final state, so the masthead is
 visible with JavaScript disabled (2.7); the script clears it on its first frame and
 restores it under `prefers-reduced-motion`.
+
+D10. Traffic is measured by Cloudflare Web Analytics, emitted by
+`_includes/head_custom.html` only when `cloudflare_analytics_token` is set in
+`_config.yml`. It is the site's only third-party resource and is deferred (2.8).
+It sets no cookie and stores nothing on the device, so no consent dialogue is
+required; what it collects is stated at `/privacy/`.
 
 D9. A site page other than the landing page is a Markdown file at the repository
 root carrying `layout: minimal`, an explicit directory `permalink`, and

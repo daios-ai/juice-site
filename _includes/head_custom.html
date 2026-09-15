@@ -16,3 +16,15 @@
 {%- endcomment -%}
 <link rel="preload" as="font" type="font/woff2" crossorigin
       href="{{ '/assets/fonts/jetbrains-mono-latin.woff2' | relative_url }}">
+
+{%- comment -%}
+  Cloudflare Web Analytics. The only resource this site loads from another
+  origin, and deferred, so it cannot delay rendering (requirements 2.8). It
+  sets no cookie, does not fingerprint, and does not identify a returning
+  reader, which is why the site needs no consent dialogue; /privacy/ says so.
+  Emitted only once a token is configured.
+{%- endcomment -%}
+{%- if site.cloudflare_analytics_token != "" -%}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
+{%- endif -%}
