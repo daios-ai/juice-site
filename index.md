@@ -122,7 +122,8 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 
 MCP lets agents call tools, and x402 lets them pay for services. That works when the agent manages the workflow itself.
 
-Juice adds bounded delegation: an action can spend its budget on other actions, which can do the same recursively. The caller does not need to know the full supply chain, while each provider can choose its own suppliers within the budget it receives.
+Juice adds bounded delegation: an action can spend its budget on other actions, which can do the same recursively. 
+This allows agents to delegate work to services discovered at runtime without managing every downstream transaction or giving them unrestricted spending authority.
 
 ```text
 agent
@@ -149,8 +150,6 @@ action A
 <tr><td>Produce evidence across the execution</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
 </tbody>
 </table>
-
-This allows agents to delegate work to services discovered at runtime without managing every downstream transaction or giving them unrestricted spending authority.
 </section>
 
 {%- comment -%}
@@ -159,7 +158,7 @@ This allows agents to delegate work to services discovered at runtime without ma
   a reader while the juice-ui manual is unwritten. It gains both together.
 {%- endcomment -%}
 <section class="juice-section juice-section--wide">
-<h2>Juice UI</h2>
+<h2>Juice UI (coming soon)</h2>
 
 <figure class="juice-shot">
 <img src="{{ '/assets/juice-ui.webp' | relative_url }}" width="1785" height="860"

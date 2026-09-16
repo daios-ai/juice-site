@@ -343,6 +343,28 @@ code {
     margin-top: var(--juice-space-medium);
   }
 
+  // A page of continuous prose rather than a title block. The landing page
+  // centres its text, which works for short blocks under a hero and is
+  // unreadable over an essay: a centred paragraph has no straight edge for the
+  // eye to return to. Headings keep the theme's own document rhythm rather than
+  // the uppercase section label, since here they divide an argument rather than
+  // name a panel.
+  &.juice-doc {
+    text-align: left;
+
+    .juice-home,
+    .juice-pitch {
+      text-align: center;
+    }
+
+    // The influences table carries two columns of prose and cannot live in the
+    // reading measure.
+    .table-wrapper {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
   // A page with no hero starts at its logotype, which would otherwise sit one em
   // under the header rule. It takes the measure the hero has.
   &.juice-page {
