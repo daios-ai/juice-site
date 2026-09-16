@@ -2,6 +2,7 @@
 - Never implement code if I don't ask you directly
 - Never split work into phases, stages, or separate commits; deliver the full scope in one pass.
 - If you ever touch requirements.md, you MUST FOLLOW THE INSTRUCTIONS FOR CHANGING IT.
+- Never add a Claude-Session trailer or any session identifier to commit messages.
 
 Answering questions
 ===================
