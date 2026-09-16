@@ -16,7 +16,7 @@ nav_exclude: true
 Juice is open source, developed by DAIOS Technologies Ltd.
 
 Sponsorship will be through GitHub Sponsors on the
-[daios-ai](https://github.com/daios-ai) organisation. That account is not open yet.
+[daios-ai](https://github.com/daios-ai) organization. That account is not open yet.
 When it is, this page will say what the money pays for and how it is accounted.
 </section>
 

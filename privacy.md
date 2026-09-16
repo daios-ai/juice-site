@@ -23,7 +23,7 @@ The data controller is [DAIOS Technologies Ltd](https://daios.ai).
 <h2>Analytics</h2>
 
 Page views and referring sites are counted by Cloudflare Web Analytics. It uses
-no cookies, does not fingerprint your browser, and does not recognise you on a
+no cookies, does not fingerprint your browser, and does not recognize you on a
 later visit or on another site. Your IP address reaches Cloudflare with the
 request, as it does with every request to every website, and is not retained for
 analytics. The lawful basis is our legitimate interest in knowing whether this

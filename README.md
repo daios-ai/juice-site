@@ -67,7 +67,7 @@ BASEURL=/juice-site python3 script/check-site _site
 
 A manual needs Just the Docs front matter (`title`, `nav_order`, and `parent`
 for child pages) to produce a useful sidebar. Plain Markdown will render but
-will not organise itself.
+will not organize itself.
 
 ## Known limitation
 

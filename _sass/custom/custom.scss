@@ -188,7 +188,7 @@
 // Site title. The theme's own `.site-logo` is a full-width background image
 // with no text beside it; `_includes/title.html` replaces it with the mark and
 // the name as two flex children of `.site-title`, which the theme already lays
-// out as a centred row.
+// out as a centerd row.
 //
 // The name takes the same uppercase letterspaced treatment as the sidebar's
 // section headings, so the header and the navigation under it read as one.
@@ -344,8 +344,8 @@ code {
   }
 
   // A page of continuous prose rather than a title block. The landing page
-  // centres its text, which works for short blocks under a hero and is
-  // unreadable over an essay: a centred paragraph has no straight edge for the
+  // centers its text, which works for short blocks under a hero and is
+  // unreadable over an essay: a centerd paragraph has no straight edge for the
   // eye to return to. Headings keep the theme's own document rhythm rather than
   // the uppercase section label, since here they divide an argument rather than
   // name a panel.
@@ -455,8 +455,8 @@ code {
   // Three soft radial gradients behind the hero, offset from one another and
   // overlapping: the mark's pink high and left behind the hexagon, its magenta
   // low and right past the wordmark, the palette's blue larger and fainter at
-  // the far right. One centred glow read as a spotlight under an asymmetric
-  // lockup; a dispersed field has no centre to disagree with.
+  // the far right. One centerd glow read as a spotlight under an asymmetric
+  // lockup; a dispersed field has no center to disagree with.
   //
   // The box extends half the band's height above and below it, not sideways,
   // which on a narrow viewport would widen the page. Each ellipse is sized and
@@ -526,8 +526,8 @@ code {
     }
   }
 
-  // The landing page centres its text, which a diagram cannot survive: each
-  // line is centred on its own and the branches stop lining up.
+  // The landing page centers its text, which a diagram cannot survive: each
+  // line is centerd on its own and the branches stop lining up.
   pre {
     text-align: left;
   }
@@ -614,7 +614,7 @@ code {
   }
 
   // The feature list: six parallel items, so two columns on a wide screen rather
-  // than one centred ribbon. The pairs are wrapped in divs so the grid places
+  // than one centerd ribbon. The pairs are wrapped in divs so the grid places
   // pairs, not terms and definitions separately. The theme lays every dl out as
   // its own two-column grid with a colon after each term; both undone here.
   .juice-features {

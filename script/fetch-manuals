@@ -2,7 +2,7 @@
 """Fetch each manual listed in manuals.yml into a Jekyll collection directory.
 
 Manuals live in their own repositories. This script downloads the requested
-directory from each one and materialises it as `_<name>/` so Jekyll can render
+directory from each one and materializes it as `_<name>/` so Jekyll can render
 it as a collection. Nothing it writes is committed to this repository.
 
 Credentials: MANUALS_TOKEN in the environment (an Actions secret in CI), or a

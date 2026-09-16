@@ -1,7 +1,7 @@
 # Manuals pulled into the site at build time.
 #
 # Each entry is fetched from its own repository by script/fetch-manuals and
-# materialised as the Jekyll collection `_<name>`, served under /<name>/.
+# materialized as the Jekyll collection `_<name>`, served under /<name>/.
 # The manuals stay the source of truth in their own repos; nothing here is
 # committed to this repository (see .gitignore).
 #

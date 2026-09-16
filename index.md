@@ -172,7 +172,7 @@ browser. Coming soon.</figcaption>
 
 {%- comment -%}
   Written as HTML, unlike the prose sections. A kramdown table inside an element
-  carrying `markdown="1"` is not recognised: the rows come through as one
+  carrying `markdown="1"` is not recognized: the rows come through as one
   paragraph and the `|---|` separator is typographed into em dashes. The rows
   are static, so the markup costs little and cannot fail that way.
   `_layouts/table_wrappers.html` still wraps it, since that layout rewrites every
