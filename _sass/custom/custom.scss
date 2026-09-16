@@ -691,6 +691,24 @@ code {
     max-width: 46em;
   }
 
+  // Platform glyphs beside the command. Inline SVG, since a runtime request to
+  // an icon host is a third-party resource (requirements 2.8); the paths are
+  // Simple Icons, CC0. `currentColor` keeps them the colour of the line they
+  // sit in, so they follow the palette without a rule of their own.
+  .juice-os-line {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em;
+  }
+
+  .juice-os {
+    flex: none;
+    height: 1.1em;
+    vertical-align: -0.15em;
+    width: 1.1em;
+  }
+
   // The route home. The sidebar's linked logotype is the usual one, and the
   // minimal layout omits the sidebar; below the md breakpoint these pages have
   // no header either, so without this a reader has no way back except the
