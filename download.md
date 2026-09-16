@@ -6,7 +6,7 @@ permalink: /download/
 nav_exclude: true
 ---
 
-<div class="juice-page" markdown="1">
+<div class="juice-page juice-page--center" markdown="1">
 
 <a class="juice-home" href="{{ '/' | relative_url }}" aria-label="Juice home">{% include title.html %}</a>
 

@@ -682,14 +682,15 @@ code {
   --juice-space-xx-large: 4em;
   --juice-transition: 0.15s cubic-bezier(0.33, 1, 0.68, 1);
 
+  // Without a sidebar the column is 60rem, which is too wide to read. The
+  // measure sits here rather than on each child: `em` resolves against the
+  // element's own font size, so a heading took a far wider cap than a
+  // paragraph, `margin-inline: auto` then centered the two differently, and a
+  // title and its text no longer shared a left edge. `rem` is the root, so this
+  // is one measure for everything inside.
+  margin-inline: auto;
+  max-width: 46rem;
   padding-top: var(--juice-space-xx-large);
-
-  // Without a sidebar the column is 60rem, which is too wide to read. 46em is
-  // the measure a manual page gets for the same reason.
-  > * {
-    margin-inline: auto;
-    max-width: 46em;
-  }
 
   // Platform glyphs beside the command. Inline SVG, since a runtime request to
   // an icon host is a third-party resource (requirements 2.8); the paths are
@@ -739,5 +740,17 @@ code {
     &:focus-visible .juice-mark {
       opacity: 0.8;
     }
+  }
+}
+
+// A page that is acted on rather than read — a command, and a link or two — is
+// the same kind of block as the landing page's title, not the same kind as an
+// essay. Centering is added here rather than subtracted from the pages that
+// read as prose, so nothing needs an exception.
+.main-content .juice-page--center {
+  text-align: center;
+
+  .juice-os-line {
+    justify-content: center;
   }
 }
