@@ -69,42 +69,42 @@ and compose into new ones.</p>
 <dl class="juice-features">
 <div>
 <dt>Composable actions</dt>
-<dd>Actions are economic building blocks: typed, priced capabilities that can themselves buy other actions from their budget. Providers can combine specialist services and sell the resulting capability at one advertised price.</dd>
+<dd>Typed, priced capabilities can use other actions from their budget, allowing providers to combine specialist services into new capabilities.</dd>
 </div>
 
 <div>
 <dt>Delegated execution</dt>
-<dd>Run a process on a network. Work can move between services without the caller coordinating every step. A funded process preserves progress and budget, can pause for input, and continue when participants respond.</dd>
+<dd>Run a process on a network. Work can pass between services, agents, and people while preserving progress and budget.</dd>
 </div>
 
 <div>
 <dt>The web as it is</dt>
-<dd>Existing services can join without being rebuilt for a new agent platform. <a href="https://www.openapis.org/">OpenAPI</a> operations become actions, actions remain ordinary HTTP endpoints, and existing mechanisms such as <a href="https://oauth.net/2/">OAuth</a> continue to handle consent.</dd>
+<dd>Existing HTTP and <a href="https://www.openapis.org/">OpenAPI</a> services can participate directly, without being rebuilt for a separate agent platform.</dd>
 </div>
 
 <div>
 <dt>A market of capabilities</dt>
-<dd>Agents can discover capabilities at runtime rather than relying on integrations chosen in advance. Public actions are searchable across the network and expose a typed interface, description, and advertised price.</dd>
+<dd>Agents can discover and select capabilities at runtime instead of relying on integrations chosen in advance.</dd>
 </div>
 
 <div>
 <dt>Blockchain micropayments</dt>
-<dd>Even small contributions can be paid for economically. Calls between nodes settle on <a href="https://arbitrum.io/">Arbitrum One</a>, with small obligations handled through probabilistic payments whose expected value matches the amount owed.</dd>
+<dd>Small contributions can be paid economically, allowing value to follow the services that perform the work.</dd>
 </div>
 
 <div>
 <dt>Traceable trade</dt>
-<dd>Past behavior can inform future selection. Every call produces a signed receipt recording the transaction, and payer feedback travels with that evidence across nodes rather than being reduced to a central score.</dd>
+<dd>Signed receipts and payer feedback provide evidence that agents and people can use when selecting services.</dd>
 </div>
 
 <div>
 <dt>Runs anywhere</dt>
-<dd>Independent operators can participate without relying on a central host. A node can run on a laptop behind a home router, with no public address, port forwarding, or hosted infrastructure required.</dd>
+<dd>Independent nodes can participate without a central host, public address, or dedicated infrastructure.</dd>
 </div>
 
 <div>
 <dt>Bring your own LLM</dt>
-<dd>The network does not depend on one model provider. A node can use a local or remote language model, fall back to keyword search without one, and handle payments independently of either.</dd>
+<dd>Use a local or remote model, or none at all. The network does not depend on one AI provider.</dd>
 </div>
 </dl>
 </section>
