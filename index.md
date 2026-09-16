@@ -63,55 +63,42 @@ and compose into new ones.</p>
 <dl class="juice-features">
 <div>
 <dt>Composable actions</dt>
-<dd>An action is typed and priced, and may call other actions within its budget. Its owner
-sells the result as one thing at one advertised price; the parties beneath are paid from
-it.</dd>
+<dd>Actions are economic building blocks: typed, priced capabilities that can themselves buy other actions from their budget. Providers can combine specialist services and sell the resulting capability at one advertised price.</dd>
 </div>
 
 <div>
 <dt>Delegated execution</dt>
-<dd>Like running a process, but on the network: a funded computation is handed off, may call
-other actions, may pause for a named person or agent, and settles when they answer.</dd>
-</div>
-
-<div>
-<dt>Blockchain micropayments</dt>
-<dd>Between nodes, every call settles on <a href="https://arbitrum.io/">Arbitrum One</a>. An
-obligation too small to be worth its own transaction settles by a draw neither side can
-rig: a larger amount paid rarely, averaging out exact.</dd>
-</div>
-
-<div>
-<dt>A market of capabilities</dt>
-<dd>Public actions are found by natural-language search across every node, and called
-from your own balance &mdash; no account anywhere else. Each result carries its typed
-interface and one advertised price.</dd>
-</div>
-
-<div>
-<dt>Traceable trade</dt>
-<dd>Every call records who paid, who asked and who was paid, and leaves a signed receipt
-verifiable offline. A rating rides with that receipt and crosses nodes as evidence, never
-an opaque score.</dd>
-</div>
-
-<div>
-<dt>Runs anywhere</dt>
-<dd>One binary and one file. A node on a laptop behind a home router is a full member of the
-network: no public address, no port forwarding, nothing hosted.</dd>
-</div>
-
-<div>
-<dt>Bring your own LLM</dt>
-<dd>The node's language model is whichever you point it at, a local one by default. Search
-falls back to keywords without one, and nothing about money depends on which model you
-run.</dd>
+<dd>Run a process on a network. Work can move between services without the caller coordinating every step. A funded process preserves progress and budget, can pause for input, and continue when participants respond.</dd>
 </div>
 
 <div>
 <dt>The web as it is</dt>
-<dd>An existing API joins by its OpenAPI document, one action per operation; an action is an
-HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
+<dd>Existing services can join without being rebuilt for a new agent platform. <a href="https://www.openapis.org/">OpenAPI</a> operations become actions, actions remain ordinary HTTP endpoints, and existing mechanisms such as <a href="https://oauth.net/2/">OAuth</a> continue to handle consent.</dd>
+</div>
+
+<div>
+<dt>A market of capabilities</dt>
+<dd>Agents can discover capabilities at runtime rather than relying on integrations chosen in advance. Public actions are searchable across the network and expose a typed interface, description, and advertised price.</dd>
+</div>
+
+<div>
+<dt>Blockchain micropayments</dt>
+<dd>Even small contributions can be paid for economically. Calls between nodes settle on <a href="https://arbitrum.io/">Arbitrum One</a>, with small obligations handled through probabilistic payments whose expected value matches the amount owed.</dd>
+</div>
+
+<div>
+<dt>Traceable trade</dt>
+<dd>Past behavior can inform future selection. Every call produces a signed receipt recording the transaction, and payer feedback travels with that evidence across nodes rather than being reduced to a central score.</dd>
+</div>
+
+<div>
+<dt>Runs anywhere</dt>
+<dd>Independent operators can participate without relying on a central host. A node can run on a laptop behind a home router, with no public address, port forwarding, or hosted infrastructure required.</dd>
+</div>
+
+<div>
+<dt>Bring your own LLM</dt>
+<dd>The network does not depend on one model provider. A node can use a local or remote language model, fall back to keyword search without one, and handle payments independently of either.</dd>
 </div>
 </dl>
 </section>
@@ -123,7 +110,7 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 MCP lets agents call tools, and x402 lets them pay for services. That works when the agent manages the workflow itself.
 
 Juice adds bounded delegation: an action can spend its budget on other actions, which can do the same recursively. 
-This allows agents to delegate work to services discovered at runtime without managing every downstream transaction or giving them unrestricted spending authority.
+This allows agents to delegate work to services discovered at runtime without centralizing coordination and spending authority.
 
 ```text
 agent
@@ -194,6 +181,8 @@ browser. Coming soon.</figcaption>
 </tbody>
 </table>
 </section>
+
+=== COMMENT: WHY DO WE NEED MANUALS? HAHAHA 
 
 <section class="juice-section" markdown="1">
 <h2>Where to start</h2>
