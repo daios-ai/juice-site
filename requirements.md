@@ -160,13 +160,14 @@ required; what it collects is stated at `/privacy/`.
 
 D9. A site page other than the landing page is a Markdown file at the repository
 root carrying `layout: minimal`, an explicit directory `permalink`, and
-`nav_exclude: true`. It reuses the landing page's styles through
-`class="juice-landing juice-page"`. The directory permalink is served as
-`index.html` and needs no host redirect; D3 does not apply, because site pages
-carry no relative links written with an extension. `nav_exclude` keeps them out of
-a manual's sidebar, which is that manual's namespace (D2). They are reached from
-the footer, which is shared with the manual, and each carries the linked logotype
-that the omitted sidebar would otherwise provide.
+`nav_exclude: true`, wrapped in `class="juice-page"`. Its prose is rendered by
+the theme exactly as a manual page's is; `.juice-page` supplies only what the
+omitted sidebar takes away — a reading measure, the top measure, and the linked
+logotype. The directory permalink is served as `index.html` and needs no host
+redirect; D3 does not apply, because site pages carry no relative links written
+with an extension. `nav_exclude` keeps them out of a manual's sidebar, which is
+that manual's namespace (D2). They are reached from the footer, which is shared
+with the manual.
 
 ## 7. Notes for editors
 

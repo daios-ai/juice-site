@@ -343,59 +343,6 @@ code {
     margin-top: var(--juice-space-medium);
   }
 
-  // A page of continuous prose rather than a title block. The landing page
-  // centers its text, which works for short blocks under a hero and is
-  // unreadable over an essay: a centerd paragraph has no straight edge for the
-  // eye to return to. Headings keep the theme's own document rhythm rather than
-  // the uppercase section label, since here they divide an argument rather than
-  // name a panel.
-  &.juice-doc {
-    text-align: left;
-
-    .juice-home,
-    .juice-pitch {
-      text-align: center;
-    }
-  }
-
-  // A page with no hero starts at its logotype, which would otherwise sit one em
-  // under the header rule. It takes the measure the hero has.
-  &.juice-page {
-    padding-top: var(--juice-space-xx-large);
-
-    .juice-pitch {
-      margin-top: var(--juice-space-large);
-    }
-  }
-
-  // The route home. The sidebar's linked logotype is the usual one, and the
-  // minimal layout omits the sidebar; below the md breakpoint these pages have
-  // no header either, so without this a reader has no way back except the
-  // footer. Reuses the sidebar's own mark and name, so the two read alike.
-  .juice-home {
-    align-items: center;
-    display: inline-flex;
-    // The name comes from the sidebar's include at the sidebar's size; scaled
-    // with the mark so the lockup holds its proportions here.
-    font-size: 140%;
-    gap: 0.6em;
-    // `.main-content a` is overflow: hidden, which clips a flex child.
-    overflow: visible;
-    text-decoration: none;
-
-    // Larger than the sidebar's, where the mark sits beside nav type. Here it
-    // is the only thing above the title and must hold the top of the page.
-    .juice-mark {
-      height: 3.5em;
-      transition: opacity var(--juice-transition);
-    }
-
-    &:hover .juice-mark,
-    &:focus-visible .juice-mark {
-      opacity: 0.8;
-    }
-  }
-
   .juice-lede {
     margin-top: var(--juice-space-neutral);
   }
@@ -693,5 +640,64 @@ code {
   .main-content .juice-landing .juice-button:hover {
     background: $tn-turquoise;
     color: $tn-night;
+  }
+}
+
+// A top-level page other than the landing page: Why, Contact, Sponsor, Privacy.
+//
+// Its prose is the theme's, exactly as a manual page's is — headings, measure
+// and rhythm all come from `.main-content`, and nothing here restyles them. The
+// three rules below supply only what `layout: minimal` takes away by omitting
+// the sidebar: a reading measure, which the sidebar otherwise imposes by taking
+// half the width; the top measure the hero gives the landing page; and the
+// linked logotype, which lives in the sidebar on every other page.
+.main-content .juice-page {
+  // Spacing tokens, since these pages sit outside .juice-landing, which is
+  // where they are otherwise declared.
+  // Source: omacom/omarchy-site at 9832321, assets/css/root.css.
+  --juice-space-medium: 1em;
+  --juice-space-large: 2em;
+  --juice-space-xx-large: 4em;
+  --juice-transition: 0.15s cubic-bezier(0.33, 1, 0.68, 1);
+
+  padding-top: var(--juice-space-xx-large);
+
+  // Without a sidebar the column is 60rem, which is too wide to read. 46em is
+  // the measure a manual page gets for the same reason.
+  > * {
+    margin-inline: auto;
+    max-width: 46em;
+  }
+
+  // The route home. The sidebar's linked logotype is the usual one, and the
+  // minimal layout omits the sidebar; below the md breakpoint these pages have
+  // no header either, so without this a reader has no way back except the
+  // footer. Reuses the sidebar's own mark and name, so the two read alike.
+  .juice-home {
+    align-items: center;
+    // A flex row that centers its own contents, so the logotype sits in the
+    // middle whatever the surrounding text alignment is. Centering it with
+    // `text-align` would make it depend on a property the page kinds differ on.
+    display: flex;
+    justify-content: center;
+    // The name comes from the sidebar's include at the sidebar's size; scaled
+    // with the mark so the lockup holds its proportions here.
+    font-size: 140%;
+    gap: 0.6em;
+    // `.main-content a` is overflow: hidden, which clips a flex child.
+    overflow: visible;
+    text-decoration: none;
+
+    // Larger than the sidebar's, where the mark sits beside nav type. Here it
+    // is the only thing above the title and must hold the top of the page.
+    .juice-mark {
+      height: 3.5em;
+      transition: opacity var(--juice-transition);
+    }
+
+    &:hover .juice-mark,
+    &:focus-visible .juice-mark {
+      opacity: 0.8;
+    }
   }
 }

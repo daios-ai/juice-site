@@ -6,11 +6,11 @@ permalink: /why/
 nav_exclude: true
 ---
 
-<div class="juice-landing juice-page juice-doc" markdown="1">
+<div class="juice-page" markdown="1">
 
 <a class="juice-home" href="{{ '/' | relative_url }}" aria-label="Juice home">{% include title.html %}</a>
 
-<h1 class="juice-pitch">Why Juice</h1>
+# Why Juice
 
 Juice starts from a question in AI safety: how can increasingly capable AI remain subject to human evaluation and direction without concentrating economic power? A [decentralized approach](https://daios.ai/static/pdf/daios-vision-paper.pdf) allows intelligence to develop through the coordination of independently operated services, guided by human feedback on their use. The aim is economic inclusion: anyone can contribute capabilities and receive payment for their use, creating an incentive to contribute without requiring ownership of the whole system. Juice provides the infrastructure for this approach.
 
