@@ -356,13 +356,6 @@ code {
     .juice-pitch {
       text-align: center;
     }
-
-    // The influences table carries two columns of prose and cannot live in the
-    // reading measure.
-    .table-wrapper {
-      max-width: none;
-      width: 100%;
-    }
   }
 
   // A page with no hero starts at its logotype, which would otherwise sit one em
