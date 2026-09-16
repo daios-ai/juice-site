@@ -16,21 +16,8 @@ nav_exclude: true
 curl -fsSL https://juiceos.org/install.sh | sh
 ```
 
-macOS or Linux, Intel or ARM. One binary in `~/.juice/bin`: nothing system-wide, no
-password, no kernel started.
+macOS or Linux, Intel or ARM.
 
-The script downloads the release for your platform and refuses it unless it matches the
-published checksum. [Read it first]({{ '/install.sh' | relative_url }}) if you would
-rather not pipe a script into a shell.
-
-A particular version:
-
-```sh
-curl -fsSL https://juiceos.org/install.sh | sh -s -- v0.14.16
-```
-
-Then [Getting started]({{ '/juice/getting-started.html' | relative_url }}).
-
-No Windows build yet. [Build from source](https://github.com/daios-ai/juice).
+[Read the script]({{ '/install.sh' | relative_url }}) &middot; [Getting started]({{ '/juice/getting-started.html' | relative_url }})
 
 </div>
