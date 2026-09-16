@@ -137,10 +137,11 @@ action A
         └── provider margin
 ```
 
-{%- comment -%}
+{% comment %}
   HTML, not a kramdown table: kramdown does not parse one inside an element
   carrying markdown="1" (requirements 7.2).
-{%- endcomment -%}
+{% endcomment %}
+
 <table>
 <thead>
 <tr><th></th><th>MCP + APIs + x402</th><th>Juice</th></tr>
