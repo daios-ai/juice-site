@@ -43,10 +43,16 @@ HTTP endpoint becomes an <strong>action</strong> that anyone can call, pay for,
 and compose into new ones.</p>
 
 <nav class="juice-actions" aria-label="Primary">
+<div class="juice-actions__group">
+<a class="juice-button" href="{{ '/download/' | relative_url }}">Download</a>
 <a class="juice-button" href="{{ '/juice/' | relative_url }}">Manual</a>
 <a class="juice-button" href="{{ '/juice/getting-started.html' | relative_url }}">Getting started</a>
-<a class="juice-button" href="https://github.com/daios-ai">GitHub</a>
+<a class="juice-button" href="https://github.com/daios-ai/juice">GitHub</a>
+</div>
+<div class="juice-actions__group">
+<a class="juice-button" href="{{ '/why/' | relative_url }}">Why Juice</a>
 <a class="juice-button" href="https://daios.ai/static/pdf/daios-vision-paper.pdf">Vision paper</a>
+</div>
 </nav>
 
 {%- comment -%}

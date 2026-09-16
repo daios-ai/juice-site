@@ -86,6 +86,7 @@ CNAME                     the domain the site is served at
 index.md                  landing page
 why.md sponsor.md         site pages (D9)
 contact.md privacy.md
+download.md
 manuals.yml               manuals to pull
 _config.yml               site configuration; one block per manual under
                           collections, defaults and just_the_docs.collections
@@ -93,6 +94,7 @@ _includes/                theme include overrides
 _sass/custom/setup.scss   palette variables, logotype variables, @font-face
 _sass/custom/custom.scss  theme overrides and landing page styles
 assets/                   logo, icons, fonts, masthead script
+install.sh                pulled by build step 1; served at the root
 script/fetch-manuals      build step 1
 script/check-site         build step 3
 .github/workflows/        build steps 1–4

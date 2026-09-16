@@ -600,6 +600,28 @@ code {
     justify-content: center;
   }
 
+  // One flex context for every button, so a row that cannot fit them all spills
+  // evenly. With a container per group, each group wraps on its own and can
+  // strand a single button on a line of its own.
+  // Source: omacom/omarchy-site at 9832321, assets/css/nav.css.
+  .juice-actions__group {
+    display: contents;
+  }
+
+  @include mq(lg) {
+    // Wide enough for the groups to sit on their own lines as intended.
+    .juice-actions {
+      display: grid;
+    }
+
+    .juice-actions__group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--juice-space-medium);
+      justify-content: center;
+    }
+  }
+
   // Source: omacom/omarchy-site at 9832321, assets/css/button.css.
   .juice-button {
     align-items: center;
