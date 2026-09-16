@@ -7,6 +7,9 @@ _site/
 # These live in their own repositories; never commit them here.
 _juice/
 
+# Pulled from the manual's repo by the same script; served at the site root.
+install.sh
+
 # Ruby
 Gemfile.lock
 vendor/

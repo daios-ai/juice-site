@@ -17,6 +17,7 @@
 #   repo   owner/repo on github.com
 #   ref    branch, tag or commit to pull from
 #   path   directory inside that repo holding the manual
+#   files  optional; files copied to the site root and served as they are
 
 manuals:
   - name: juice
@@ -24,3 +25,5 @@ manuals:
     repo: daios-ai/juice
     ref: master
     path: manual
+    files:
+      - install.sh

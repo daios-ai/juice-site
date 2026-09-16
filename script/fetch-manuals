@@ -145,6 +145,7 @@ def fetch(entry, tok, tmp):
     # ever gets large, switch that entry to a blobless sparse clone.
     dest = tmp / name
     dest.mkdir(parents=True)
+    extras = tmp / f"{name}-files"
     with tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz") as tf:
         first = tf.next()
         if first is None:
@@ -152,6 +153,23 @@ def fetch(entry, tok, tmp):
         top = first.name.split("/", 1)[0]
         tf.extractall(dest, members=safe_members(tf, f"{top}/{path}", dest),
                       filter="data")
+
+        # Files served from the site root rather than rendered as pages, taken
+        # from the same archive: install.sh is fetched so that the command a
+        # reader runs is on this domain rather than on a raw content host.
+        for rel in entry.get("files") or []:
+            tf2 = tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz")
+            with tf2:
+                try:
+                    member = tf2.getmember(f"{top}/{rel}")
+                except KeyError:
+                    raise Failure(f"{repo}: {rel} is not in {ref}") from None
+                if not member.isfile():
+                    raise Failure(f"{repo}: {rel} is not a regular file")
+                extras.mkdir(exist_ok=True)
+                data = tf2.extractfile(member).read()
+            (extras / Path(rel).name).write_bytes(data)
+            log(f"  {name}: {rel} -> /{Path(rel).name} ({len(data)} bytes)")
 
     # The manual's own _config.yml configures it as a standalone site. It must
     # not leak into this one.
@@ -210,6 +228,10 @@ def main(argv):
             if target.exists():
                 shutil.rmtree(target)
             shutil.move(str(tmp / e["name"]), str(target))
+            extras = tmp / f"{e['name']}-files"
+            if extras.is_dir():
+                for f in extras.iterdir():
+                    shutil.move(str(f), str(ROOT / f.name))
 
     for name, n in counts.items():
         log(f"  _{name}/: {n} page(s)")

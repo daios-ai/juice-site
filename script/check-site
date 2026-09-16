@@ -217,7 +217,13 @@ def main(argv):
                     errors.append(f"{rel_page}: missing anchor #{frag} in "
                                   f"{target.relative_to(site)}")
 
-    # 4. Search index resolves and carries extensions.
+    # 4. The install script is served, since a reader pipes it into a shell.
+    install = site / "install.sh"
+    if not install.is_file() or install.stat().st_size == 0:
+        errors.append("install.sh missing or empty (fetch-manuals copies it "
+                      "from the manual's repo)")
+
+    # 5. Search index resolves and carries extensions.
     search = site / "assets" / "js" / "search-data.json"
     if not search.is_file():
         errors.append("search index missing: assets/js/search-data.json "
