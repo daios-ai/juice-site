@@ -163,33 +163,6 @@ browser. Coming soon.</figcaption>
 </figure>
 </section>
 
-{%- comment -%}
-  Written as HTML, unlike the prose sections. A kramdown table inside an element
-  carrying `markdown="1"` is not recognized: the rows come through as one
-  paragraph and the `|---|` separator is typographed into em dashes. The rows
-  are static, so the markup costs little and cannot fail that way.
-  `_layouts/table_wrappers.html` still wraps it, since that layout rewrites every
-  `<table` in the rendered page.
-{%- endcomment -%}
-<section class="juice-section juice-section--wide">
-<h2>Manuals</h2>
-
-<table>
-<thead>
-<tr><th>Component</th><th>What it is</th><th>Manual</th></tr>
-</thead>
-<tbody>
-<tr><td>Juice kernel</td><td>Accounts, actions, execution, settlement, federation</td><td><a href="{{ '/juice/' | relative_url }}">Juice manual</a></td></tr>
-<tr><td>Juice UI</td><td>A web interface to a kernel</td><td>coming soon</td></tr>
-<tr><td>Juice rail</td><td>Money rail and on-chain settlement</td><td>coming soon</td></tr>
-<tr><td>Juice agent</td><td>Agent-side integration</td><td>coming soon</td></tr>
-<tr><td>Juice services</td><td>Services published on the network</td><td>coming soon</td></tr>
-</tbody>
-</table>
-</section>
-
-=== COMMENT: WHY DO WE NEED MANUALS? HAHAHA 
-
 <section class="juice-section" markdown="1">
 <h2>Where to start</h2>
 
