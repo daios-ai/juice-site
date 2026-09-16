@@ -16,6 +16,10 @@ $tn-terminal-cyan: #7dcfff; // --rgb-terminal-cyan
 $tn-turquoise: #b4f9f8; // --rgb-turquoise
 $tn-green: #9ece6a; // --rgb-green
 
+// Tokyo Night's red. The reference's root.css defines no red; the comparison
+// table needs one to set against $tn-green.
+$tn-red: #f7768e;
+
 // The logotype face, taken from the masthead animation's wordmark so the mark
 // in the manual's sidebar and the mark on the landing page are the same
 // lettering. The literal stack lives on the <text> element in
@@ -43,10 +47,13 @@ $juice-mark-magenta: #aa0088;
 // on this origin, cached and revalidated with everything else, and the page
 // paints whether or not anything third-party answers.
 //
-// Two files, the Latin subsets of the same variable faces Google serves: the
-// upright carries every weight from 300 to 700 in one file, and the italic
-// covers the one weight this site sets in italic. Latin includes U+2000-206F,
-// so the em dashes are there. Paths are relative to the compiled stylesheet in
+// Two files. The upright carries every weight from 300 to 700, subset from the
+// variable font to Google's own Latin ranges plus U+2190-21FF, U+2500-257F and
+// U+25A0-25FF — arrows, box drawing and geometric shapes — which the diagram on
+// the landing page needs and Google's Latin subset does not carry. Without them
+// every rule and arrow fell back to another monospace face, whose advance width
+// differs, and the tree did not line up. The italic covers the one weight this
+// site sets in italic. Paths are relative to the compiled stylesheet in
 // assets/css/, which keeps them correct under the project's base path without
 // Liquid, which does not run in _sass.
 @font-face {

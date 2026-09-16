@@ -120,9 +120,9 @@ HTTP endpoint; consent is OAuth. There is no new protocol to adopt.</dd>
 
 <h2>Why not MCP + APIs + x402?</h2>
 
-<a href="https://modelcontextprotocol.io/">MCP</a> gives agents a standard way to call tools, and <a href="https://x402.org">x402</a> provides a way to pay for HTTP services. This is sufficient when the agent or its application manages the workflow and the individual supplier relationships. The difficulty appears when an agent delegates a task to a service that may itself discover and purchase other services at runtime.
+MCP lets agents call tools, and x402 lets them pay for services. That works when the agent manages the workflow itself.
 
-Juice makes the advertised price the budget for the execution. A provider can spend from that budget on child actions, which can do the same recursively. The caller does not need to know the resulting supply chain, and each provider can choose its own suppliers within the budget it receives. Between kernels, settlement is probabilistic: the obligation is exact in expectation, although a winning draw can exceed the individual obligation it settles.
+Juice adds bounded delegation: an action can spend its budget on other actions, which can do the same recursively. The caller does not need to know the full supply chain, while each provider can choose its own suppliers within the budget it receives.
 
 ```text
 agent
@@ -137,25 +137,20 @@ action A
         └── provider margin
 ```
 
-{% comment %}
-  HTML, not a kramdown table: kramdown does not parse one inside an element
-  carrying markdown="1" (requirements 7.2).
-{% endcomment %}
-
-<table>
+<table class="juice-compare">
 <thead>
 <tr><th></th><th>MCP + APIs + x402</th><th>Juice</th></tr>
 </thead>
 <tbody>
-<tr><td>Call external capabilities</td><td>Yes</td><td>Yes</td></tr>
-<tr><td>Pay for a service</td><td>Yes</td><td>Yes</td></tr>
-<tr><td>Delegate a budget with a task</td><td>Application-defined</td><td>Native</td></tr>
-<tr><td>Preserve it through recursive delegation</td><td>Application-defined</td><td>Native</td></tr>
-<tr><td>Produce evidence across the execution</td><td>Application-defined</td><td>Native</td></tr>
+<tr><td>Call external capabilities</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+<tr><td>Pay for a service</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+<tr><td>Delegate a budget with a task</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
+<tr><td>Preserve it through recursive delegation</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
+<tr><td>Produce evidence across the execution</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
 </tbody>
 </table>
 
-The same model also covers the supplier's side of the transaction: work produces signed transaction records, and settlement is tied to the execution record. This allows services to accept delegated work from parties with whom they have no prior integration or commercial relationship.
+This allows agents to delegate work to services discovered at runtime without managing every downstream transaction or giving them unrestricted spending authority.
 </section>
 
 {%- comment -%}

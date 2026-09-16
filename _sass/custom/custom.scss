@@ -517,6 +517,18 @@ code {
     text-align: left;
   }
 
+  // Green for what a system does itself, red for what it leaves to the
+  // application, so the shape of the comparison is legible before it is read.
+  .juice-compare {
+    .yes {
+      color: $tn-green;
+    }
+
+    .no {
+      color: $tn-red;
+    }
+  }
+
   .juice-section {
     display: grid;
     gap: var(--juice-space-neutral);
