@@ -16,9 +16,9 @@ Juice starts from a question in AI safety: how can increasingly capable AI remai
 
 One approach is to build intelligence from independently operated, bounded services that can be combined as needed. People, agents, developers, and organizations can contribute capabilities and be paid when they are used.
 
-This is the starting point of the [DAIOS vision paper](https://daios.ai/static/pdf/daios-vision-paper.pdf).
+This is the starting point of the [vision paper](https://daios.ai/static/pdf/daios-vision-paper.pdf).
 
-## From Ethereum to the web
+## From Ethereum to the AI web
 
 [Ethereum](https://ethereum.org/whitepaper/) demonstrated decentralized economic coordination through shared rules, identity, payments, and verifiable execution. Juice began by exploring this model for AI and online services, where the execution requirements are different.
 
@@ -40,15 +40,15 @@ AI models, web APIs, private data, human judgment, and real-world actions cannot
 ```text
 Ethereum
 shared rules + consensus execution
-              │
-              │ keep decentralization,
-              │ identity and settlement
-              ▼
+    │
+    │ keep decentralization,
+    │ identity and settlement
+    ▼
 AI and the web
 private · changing · heterogeneous · long-running
-              │
-              │ replace global verification
-              ▼
+    │
+    │ replace global verification
+    ▼
 Juice
 independent execution
 + bounded delegation
