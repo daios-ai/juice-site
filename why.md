@@ -18,7 +18,7 @@ Our [vision](https://daios.ai/static/pdf/daios-vision-paper.pdf) is intelligence
 
 ## Many contributors, shared intelligence
 
-A capable AI system need not be a monolyth with broad authority. Juice turns capabilities into **actions**: services with descriptions, input and output schemas, and prices. Actions can combine other actions within explicit budgets and permissions to solve larger problems. Contributors earn from their work and pay the services they use. [Probabilistic micropayments](https://people.csail.mit.edu/rivest/pubs/pubs/Riv97b.pdf) make even small contributions economical to pay for.
+A capable AI system need not be a monolith with broad authority. Juice turns capabilities into **actions**: services with descriptions, input and output schemas, and prices. Actions can combine other actions within explicit budgets and permissions to solve larger problems. Contributors earn from their work and pay the services they use. [Probabilistic micropayments](https://people.csail.mit.edu/rivest/pubs/pubs/Riv97b.pdf) make even small contributions economical to pay for.
 
 This approach draws on [Reframing Superintelligence](https://ora.ox.ac.uk/objects/uuid%3A9c05427a-6390-4b42-9c55-ee45f73a26ad) and [Safe AI Should be Bounded and Multi-Agent](https://ora.ox.ac.uk/objects/uuid%3A0ba67062-c27a-4d72-b5ae-bb49efba3d0e).
 
@@ -30,7 +30,13 @@ It continues the [Semantic Web](https://www.scientificamerican.com/article/the-s
 
 ## What trust means here
 
-[Ethereum](https://ethereum.org/whitepaper/) uses consensus to verify replicated computation. It cannot generally verify an AI’s judgment, private data, or whether a real-world service did a good job. Juice therefore leaves execution to independent providers and uses blockchain for settlement.
+[Ethereum](https://ethereum.org/whitepaper/) uses consensus to verify computation. This is inadequate for AI work: it is too expensive, and it cannot verify an AI's judgment, work that relies on private data, or whether a real-world service did a good job. Juice therefore relies on:
+
+- **Limits:** each action has an explicit budget and permissions. Calls to other actions spend from that budget, recursively.
+- **Receipts:** a signed record of what happened and what was charged. They establish what a provider attested to, without proving the work was good.
+- **Ratings:** payer feedback helps people and agents decide whom to use next.
+
+Payments are the exception — anyone can check those, so settlement runs on a blockchain.
 
 <table>
 <thead>
@@ -40,16 +46,10 @@ It continues the [Semantic Web](https://www.scientificamerican.com/article/the-s
 <tr><td><strong>Execution</strong></td><td>Deterministic and replicated</td><td>Performed by independent providers</td></tr>
 <tr><td><strong>State</strong></td><td>Canonical global state</td><td>Local state and signed records</td></tr>
 <tr><td><strong>Time</strong></td><td>Atomic transactions</td><td>Persistent, long-running processes</td></tr>
-<tr><td><strong>Trust</strong></td><td>Correctness established by consensus</td><td>Authority is bounded; outcomes leave evidence</td></tr>
+<tr><td><strong>Trust</strong></td><td>Correctness by consensus</td><td>Limits, receipts, ratings</td></tr>
 <tr><td><strong>Economics</strong></td><td>Gas pays for replicated computation</td><td>Budgets pay providers and their suppliers</td></tr>
 </tbody>
 </table>
-
-Trust rests on three things:
-
-- **Limited authority:** each action has an explicit budget and permissions. Calls to other actions spend from that budget, recursively.
-- **Signed evidence:** receipts record outcomes and charges. They establish what a provider attested to, without proving the work was good.
-- **Human evaluation:** payer feedback helps people and agents decide whom to use next.
 
 Budgeted delegation draws on [agoric computing](https://papers.agoric.com/papers/markets-and-computation-agoric-open-systems/full-text/); explicit permissions draw on [object-capability security](https://www.erights.org/talks/thesis/) and the [confused deputy problem](https://www.cs.umd.edu/~jkatz/security/downloads/capabilities.html).
 
