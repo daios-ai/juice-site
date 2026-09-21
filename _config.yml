@@ -42,6 +42,14 @@ aux_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
+# The manuals mark admonitions with `{: .warning }`. The theme generates a
+# callout's rules from this key, and a manual's own _config.yml is dropped when
+# it is fetched (§3), so every callout name a manual uses is declared here.
+callouts:
+  warning:
+    title: Warning
+    color: red
+
 # One collection per manual. Each is a separate navigation namespace, so the
 # nav_order and parent values of different manuals never collide.
 #
