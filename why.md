@@ -1,6 +1,6 @@
 ---
 title: Why Juice
-description: The case for decentralized AI guided by human evaluation and open to economic participation.
+description: Why Juice connects independently owned capabilities through composition, payment, bounded authority, and human evaluation.
 layout: minimal
 permalink: /why/
 nav_exclude: true
@@ -12,15 +12,25 @@ nav_exclude: true
 
 # Why Juice
 
-Juice starts from a question in AI safety: how can increasingly capable AI remain subject to human evaluation and direction without concentrating capability, authority, data, and economic power in one system?
+Juice began with an AI safety question: how can increasingly capable AI remain subject to human evaluation and direction without giving one system broad authority?
 
-One approach is to build intelligence from independently operated, bounded services that can be combined as needed. People, agents, developers, and organizations can contribute capabilities and be paid when they are used.
+Our [vision](https://daios.ai/static/pdf/daios-vision-paper.pdf) is intelligence built from independently owned capabilities, each with limited authority. They must **work together**, the network must be **decentralized**, and anyone must be able to contribute and **get paid** when their work is used.
 
-This is the starting point of the [vision paper](https://daios.ai/static/pdf/daios-vision-paper.pdf).
+## Many contributors, shared intelligence
 
-## From Ethereum to the AI web
+A capable AI system need not be a monolyth with broad authority. Juice turns capabilities into **actions**: services with descriptions, input and output schemas, and prices. Actions can combine other actions within explicit budgets and permissions to solve larger problems. Contributors earn from their work and pay the services they use. [Probabilistic micropayments](https://people.csail.mit.edu/rivest/pubs/pubs/Riv97b.pdf) make even small contributions economical to pay for.
 
-[Ethereum](https://ethereum.org/whitepaper/) demonstrated decentralized economic coordination through shared rules, identity, payments, and verifiable execution. Juice began by exploring this model for AI and online services, where the execution requirements are different.
+This approach draws on [Reframing Superintelligence](https://ora.ox.ac.uk/objects/uuid%3A9c05427a-6390-4b42-9c55-ee45f73a26ad) and [Safe AI Should be Bounded and Multi-Agent](https://ora.ox.ac.uk/objects/uuid%3A0ba67062-c27a-4d72-b5ae-bb49efba3d0e).
+
+## Built on the web
+
+The capabilities already exist: APIs, models, software, data, devices, businesses, and people. Juice connects them using existing web standards (HTTP, REST, and OAuth) rather than requiring providers to replace their infrastructure.
+
+It continues the [Semantic Web](https://www.scientificamerican.com/article/the-semantic-web/) and [OWL-S](https://www.w3.org/submissions/OWL-S/) ambition of services that machines can discover and combine, using descriptions, schemas, and language models.
+
+## What trust means here
+
+[Ethereum](https://ethereum.org/whitepaper/) uses consensus to verify replicated computation. It cannot generally verify an AI’s judgment, private data, or whether a real-world service did a good job. Juice therefore leaves execution to independent providers and uses blockchain for settlement.
 
 <table>
 <thead>
@@ -35,49 +45,14 @@ This is the starting point of the [vision paper](https://daios.ai/static/pdf/dai
 </tbody>
 </table>
 
-AI models, web APIs, private data, human judgment, and real-world actions cannot generally be reproduced and verified by every node. Juice therefore moves execution out of consensus while retaining decentralized coordination and blockchain settlement.
+Trust rests on three things:
 
-```text
-Ethereum
-shared rules + consensus execution
-    │
-    │ keep decentralization,
-    │ identity and settlement
-    ▼
-AI and the web
-private · changing · heterogeneous · long-running
-    │
-    │ replace global verification
-    ▼
-Juice
-independent execution
-+ bounded delegation
-+ signed evidence
-+ human feedback
-```
+- **Limited authority:** each action has an explicit budget and permissions. Calls to other actions spend from that budget, recursively.
+- **Signed evidence:** receipts record outcomes and charges. They establish what a provider attested to, without proving the work was good.
+- **Human evaluation:** payer feedback helps people and agents decide whom to use next.
 
-## Shared intelligence
+Budgeted delegation draws on [agoric computing](https://papers.agoric.com/papers/markets-and-computation-agoric-open-systems/full-text/); explicit permissions draw on [object-capability security](https://www.erights.org/talks/thesis/) and the [confused deputy problem](https://www.cs.umd.edu/~jkatz/security/downloads/capabilities.html).
 
-A capable AI system need not be one agent with broad authority. Juice represents specialist capabilities as **actions**: described, typed, and priced services that can compose other actions while remaining bounded. This view is developed in [Safe AI Should be Bounded and Multi-Agent](https://ora.ox.ac.uk/objects/uuid%3A0ba67062-c27a-4d72-b5ae-bb49efba3d0e) and Eric Drexler's [Reframing Superintelligence](https://ora.ox.ac.uk/objects/uuid%3A9c05427a-6390-4b42-9c55-ee45f73a26ad).
-
-## Web-native composition
-
-The required capabilities already exist across the web: APIs, software, models, data sources, devices, organizations, and people. Juice makes them discoverable and composable without moving them into a single platform. This continues the aim of the [Semantic Web](https://www.scientificamerican.com/article/the-semantic-web/) and [OWL-S](https://www.w3.org/submissions/OWL-S/), but uses schemas, descriptions, and language models rather than a shared formal ontology.
-
-## Bounded delegation
-
-Providers need discretion over how to perform a task without receiving unlimited authority. In Juice, an action's advertised price bounds its execution budget; child actions spend from that budget recursively, while authority is explicit rather than ambient. Processes may also wait for a named person or agent and continue later. These choices draw on [object-capability security](https://www.erights.org/talks/thesis/), [the confused deputy problem](https://www.cs.umd.edu/~jkatz/security/downloads/capabilities.html), and Miller and Drexler's [agoric computing](https://papers.agoric.com/papers/markets-and-computation-agoric-open-systems/full-text/).
-
-## Economic participation
-
-Payment follows composition: a provider can earn from its capability while paying the providers it uses. Probabilistic blockchain settlement makes even small contributions economical, following Rivest's [Electronic Lottery Tickets as Micropayments](https://people.csail.mit.edu/rivest/pubs/pubs/Riv97b.pdf).
-
-## Human evaluation
-
-Outside consensus, many outcomes cannot be verified mechanically. Juice therefore records signed evidence of execution and payer feedback, which people and agents can use when selecting providers later.
-
-The design also draws on [Sagas](https://www.cs.princeton.edu/techreports/1987/070.pdf) for long-running work whose completed parts remain committed, and [petname systems](https://skyhunter.com/marcs/petnames/IntroPetNames.html) for decentralized identity with locally meaningful names.
-
-Juice combines these ideas into a decentralized network for composing capabilities across the web under explicit economic and authority limits.
+Work can pause for a named person or agent and resume later. Like [Sagas](https://www.cs.princeton.edu/techreports/1987/070.pdf), completed parts remain committed. State and signed records stay local; [petnames](https://skyhunter.com/marcs/petnames/IntroPetNames.html) give identities locally meaningful names without a central naming authority.
 
 </div>
