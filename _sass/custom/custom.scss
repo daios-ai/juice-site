@@ -774,7 +774,7 @@ code {
   // Circular, ruled like the landing page's screenshot so it reads as an
   // object of the same family. Portraits are served from assets/team/ as
   // square files with explicit dimensions, so no layout shift (requirements
-  // 2.8). The photographs are greyscale, which keeps them within the palette.
+  // 2.8). They are stored greyscale, which keeps them within the palette.
   img {
     border: $border $border-color;
     border-radius: 50%;
