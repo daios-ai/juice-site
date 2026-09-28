@@ -754,3 +754,59 @@ code {
     justify-content: center;
   }
 }
+
+// The team. One column, as on the reference's staff page (D6): a portrait,
+// a linked name, a role and a sentence or two. A grid of photographs alone
+// says nothing about who does what; the role and the text carry the entry.
+.main-content .juice-team {
+  list-style: none;
+  margin: var(--juice-space-large) 0 0;
+  padding: 0;
+
+  li {
+    align-items: start;
+    display: grid;
+    gap: var(--juice-space-large);
+    grid-template-columns: 7rem 1fr;
+    margin: 0 0 var(--juice-space-xx-large);
+  }
+
+  // Circular, ruled like the landing page's screenshot so it reads as an
+  // object of the same family. Portraits are served from assets/team/ as
+  // square files with explicit dimensions, so no layout shift (requirements
+  // 2.8). The photographs are greyscale, which keeps them within the palette.
+  img {
+    border: $border $border-color;
+    border-radius: 50%;
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  // The heading is the entry's name, not a section of the page, so it sits on
+  // the portrait's top edge rather than carrying the theme's section gap.
+  h2 {
+    margin-top: 0;
+  }
+
+  .juice-team__role {
+    color: rgba($tn-terminal-white, 0.6);
+    font-weight: 500;
+    margin-bottom: var(--juice-space-medium);
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  // Narrow screens: portrait above the text, at the same size.
+  @media (max-width: 30rem) {
+    li {
+      grid-template-columns: 1fr;
+    }
+
+    img {
+      width: 7rem;
+    }
+  }
+}
