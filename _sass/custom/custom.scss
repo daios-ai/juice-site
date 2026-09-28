@@ -769,6 +769,12 @@ code {
     gap: var(--juice-space-large);
     grid-template-columns: 7rem 1fr;
     margin: 0 0 var(--juice-space-xx-large);
+
+    // The theme draws list bullets itself, as a generated `•` on each item,
+    // so `list-style: none` on the list is not enough to remove them.
+    &::before {
+      content: none;
+    }
   }
 
   // Circular, ruled like the landing page's screenshot so it reads as an
