@@ -52,6 +52,7 @@ and compose into new ones.</p>
 <div class="juice-actions__group">
 <a class="juice-button" href="{{ '/why/' | relative_url }}">Why Juice</a>
 <a class="juice-button" href="https://daios.ai/static/pdf/daios-vision-paper.pdf">Vision paper</a>
+<a class="juice-button" href="{{ '/team/' | relative_url }}">Team</a>
 </div>
 </nav>
 
