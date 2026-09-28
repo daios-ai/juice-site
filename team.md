@@ -22,8 +22,7 @@ nav_exclude: true
 built and led one of its first safety teams. His research spans
 information-theoretic bounded rationality, strategic interaction, causality and
 AI safety. Since DeepMind he has developed decentralized, open-source
-architectures for agentic intelligence, as working prototypes rather than
-theory.</p>
+architectures for agentic intelligence.</p>
 </div>
 </li>
 <li>
@@ -34,8 +33,8 @@ theory.</p>
 <p>Works on incentives and collective agency as frameworks for understanding
 and shaping coordination in multi-agent systems of humans and AI. His
 contributions to multi-agent bounded rationality are part of the fundamental
-principles of bounded agency. With Nick Bishop and Daniel Jarne Ornia he holds
-a UK AISI Alignment Project grant on bounded multi-agent intelligence.</p>
+principles of bounded agency. His DPhil at Oxford was supervised by Michael
+Wooldridge and Julian Gutierrez.</p>
 </div>
 </li>
 <li>
