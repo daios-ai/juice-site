@@ -34,7 +34,7 @@ architectures for agentic intelligence.</p>
 <img src="{{ '/assets/team/david-hyland.webp' | relative_url }}" width="256" height="256" alt="">
 <div>
 <h2><a href="https://scholar.google.com/citations?user=izVwRKkAAAAJ">David Hyland</a></h2>
-<p class="juice-team__role">University of Oxford</p>
+<p class="juice-team__role">Postdoctoral researcher, University of Oxford</p>
 <p>Works on incentives and collective agency as frameworks for understanding
 and shaping coordination in multi-agent systems of humans and AI. His
 contributions to multi-agent bounded rationality are part of the fundamental
@@ -46,7 +46,7 @@ Wooldridge and Julian Gutierrez.</p>
 <img src="{{ '/assets/team/nick-bishop.webp' | relative_url }}" width="256" height="256" alt="">
 <div>
 <h2><a href="https://scholar.google.com/citations?user=bfaCPiYAAAAJ">Nick Bishop</a></h2>
-<p class="juice-team__role">University of Oxford</p>
+<p class="juice-team__role">Postdoctoral researcher, University of Oxford</p>
 <p>Works in mechanism design, bandit theory and agent-based models. His
 doctoral work at the University of Southampton studied problems at the
 intersection of mechanism design and machine learning, and his current
@@ -58,7 +58,7 @@ of large-scale complex systems.</p>
 <img src="{{ '/assets/team/daniel-jarne-ornia.webp' | relative_url }}" width="256" height="256" alt="">
 <div>
 <h2><a href="https://scholar.google.com/citations?user=kZjf_P4AAAAJ">Daniel Jarne Ornia</a></h2>
-<p class="juice-team__role">University of Oxford</p>
+<p class="juice-team__role">Postdoctoral researcher, University of Oxford</p>
 <p>His work spans from the formal properties of biologically inspired agent
 swarms to how limited resources affect the decisions of AI agents. He holds a
 PhD in control theory and multi-agent systems from Delft University of
