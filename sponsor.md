@@ -12,10 +12,9 @@ nav_exclude: true
 
 # Sponsor Juice
 
-Juice is open source, developed by DAIOS Technologies Ltd.
+Juice is open source, developed by the Juice Team.
 
-Sponsorship will be through GitHub Sponsors on the
-[daios-ai](https://github.com/daios-ai) organization. That account is not open yet.
-When it is, this page will say what the money pays for and how it is accounted.
+Sponsorship is not open yet. When it is, this page will say how to sponsor,
+what the money pays for, and how it is accounted.
 
 </div>

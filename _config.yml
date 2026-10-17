@@ -34,10 +34,8 @@ color_scheme: tokyonight     # _sass/color_schemes/tokyonight.scss
 aux_links:
   Manual:
     - /juice/
-  DAIOS:
-    - https://daios.ai
   GitHub:
-    - https://github.com/daios-ai
+    - https://github.com/daios-ai/juice
 
 back_to_top: true
 back_to_top_text: "Back to top"

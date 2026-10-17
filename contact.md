@@ -12,12 +12,12 @@ nav_exclude: true
 
 # Contact
 
-Juice is made by [DAIOS Technologies Ltd](https://daios.ai).
+Juice is made by the Juice Team.
 
 **Juice is in beta.** Run it at your own risk, and please report what breaks &mdash;
 a bug found by someone else is the cheapest kind.
 
-A public issue tracker is being set up. Until it exists, reach us through
-[daios.ai](https://daios.ai).
+A public issue tracker is being set up. Until it exists, write to
+[pedro.ortega@gmail.com](mailto:pedro.ortega@gmail.com).
 
 </div>

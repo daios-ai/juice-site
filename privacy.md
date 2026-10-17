@@ -15,7 +15,8 @@ nav_exclude: true
 This site sets **no cookies** and stores nothing on your device. It shows no
 advertising and shares nothing with advertisers.
 
-The data controller is [DAIOS Technologies Ltd](https://daios.ai).
+The data controller is Pedro A. Ortega, reachable at
+[pedro.ortega@gmail.com](mailto:pedro.ortega@gmail.com).
 
 <h2>Analytics</h2>
 

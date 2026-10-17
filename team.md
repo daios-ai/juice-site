@@ -17,7 +17,7 @@ nav_exclude: true
 <img src="{{ '/assets/team/pedro-ortega.webp' | relative_url }}" width="256" height="256" alt="">
 <div>
 <h2><a href="https://scholar.google.com/citations?user=GK-j94AAAAAJ">Pedro A. Ortega</a></h2>
-<p class="juice-team__role">Founder, DAIOS Technologies</p>
+<p class="juice-team__role">Creator of Juice</p>
 <p>Among the earliest hires working on AGI safety at Google DeepMind, where he
 built and led one of its first safety teams. His research spans
 information-theoretic bounded rationality, strategic interaction, causality and
