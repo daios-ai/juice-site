@@ -10,9 +10,6 @@ _juice/
 # Pulled from the manual's repo by the same script; served at the site root.
 install.sh
 
-# The latest release of each manual's repository, written by the same script.
-_data/releases/
-
 # Ruby
 Gemfile.lock
 vendor/

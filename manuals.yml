@@ -18,8 +18,6 @@
 #   ref    branch, tag or commit to pull from
 #   path   directory inside that repo holding the manual
 #   files  optional; files copied to the site root and served as they are
-#   release optional; true records the repo's latest release as
-#          site.data.releases.<name> (tag, published_at, url)
 
 manuals:
   - name: juice
@@ -29,4 +27,3 @@ manuals:
     path: manual
     files:
       - install.sh
-    release: true

@@ -17,8 +17,7 @@ Juice is made by the Juice Team.
 **Juice is in beta.** Run it at your own risk, and please report what breaks &mdash;
 a bug found by someone else is the cheapest kind.
 
-Report bugs on the
-[issue tracker](https://github.com/daios-ai/juice/issues). For anything else,
-write to [pedro.ortega@gmail.com](mailto:pedro.ortega@gmail.com).
+A public issue tracker is being set up. Until it exists, write to
+[pedro.ortega@gmail.com](mailto:pedro.ortega@gmail.com).
 
 </div>
