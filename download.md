@@ -20,7 +20,17 @@ nav_exclude: true
 curl -fsSL https://juiceos.org/install.sh | sh
 ```
 
-[Read the script]({{ '/install.sh' | relative_url }}) &middot; [Getting started]({{ '/juice/getting-started.html' | relative_url }})
+[Read the script]({{ '/install.sh' | relative_url }}) &middot; [Getting started]({{ '/juice/getting-started.html' | relative_url }}) &middot; [Configuration]({{ '/juice/reference/config.html' | relative_url }})
+
+## Requirements
+
+macOS or Linux, Intel or ARM. The kernel starts with a standard library of local
+services: search, time, web access, messaging, transfers, language-model calls,
+and a WebAssembly compiler. Which ones work depends on what is installed. We
+strongly recommend [Ollama](https://ollama.com) with a chat model (`gemma4:26b`)
+and an embedding model (`nomic-embed-text`), and the [TinyGo](https://tinygo.org)
+toolchain for creating Wasm programs. You can change the underlying models in
+the [configuration]({{ '/juice/reference/config.html' | relative_url }}).
 
 <br><br>
 </div>
