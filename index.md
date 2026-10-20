@@ -57,27 +57,27 @@ and compose into new ones.</p>
 </nav>
 
 <section class="juice-section juice-section--wide">
-<h2>Juice in practice</h2>
+<h2>Use cases</h2>
 
 <dl class="juice-features">
 <div>
 <dt>Sell software that buys software</dt>
-<dd>You sell a market report for $1. Your service buys $0.20 of data and $0.15 of analysis from other providers, keeping the remaining margin before fees. Your customer buys one result at one price.</dd>
+<dd>Your service sells a report for $1, then buys $0.20 of data and $0.15 of analysis. The customer pays once; you keep the margin after fees.</dd>
 </div>
 
 <div>
-<dt>Hire a service you've never heard of</dt>
-<dd>Your AI agent needs a specialist translator. It discovers one on another node, checks ratings backed by actual transactions, purchases the translation, and rates the result. Neither you nor your agent needs an account with the provider.</dd>
+<dt>Buy from a provider you never integrated</dt>
+<dd>Your agent discovers a translator on another node at runtime, checks trade-backed ratings, pays for the work, and rates it. No account with the provider is needed.</dd>
 </div>
 
 <div>
-<dt>Build a reputation that isn't owned by a platform</dt>
-<dd>Your OCR service has completed thousands of paid jobs. Customers on other nodes can independently verify evidence of those transactions and their ratings, without learning who your customers were, what they paid, or what they processed.</dd>
+<dt>Carry reputation across nodes</dt>
+<dd>Customers on other nodes can verify your OCR service's paid work and ratings without seeing who bought it or what they processed.</dd>
 </div>
 
 <div>
-<dt>Let a paid computation wait for a human</dt>
-<dd>Your insurance-processing service needs an adjuster's approval. It sends a task to someone on another node and waits overnight, keeping its funds reserved. When the adjuster responds, execution resumes without spending the adjuster's money.</dd>
+<dt>Wait for human approval</dt>
+<dd>An insurance claim waits overnight for an adjuster's approval. Funds stay reserved. When the adjuster responds, work resumes without spending their money.</dd>
 </div>
 </dl>
 </section>
