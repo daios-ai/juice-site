@@ -13,6 +13,9 @@ any existing `_<name>/` is replaced, so a failed fetch leaves the previous
 content in place. Archive members are filtered against path traversal and
 links.
 
+An entry with `release: true` also records its repository's latest release in
+`_data/releases/<name>.json`.
+
 Usage: python3 script/fetch-manuals [manuals.yml]
 """
 
@@ -178,6 +181,23 @@ def fetch(entry, tok, tmp):
         stray.unlink()
         log(f"  {name}: dropped the manual's own _config.yml")
 
+    # The repository's latest release, for pages that state the current
+    # version and its date. Written as Jekyll data, read as
+    # site.data.releases.<name>.
+    if entry.get("release"):
+        body = api_get(f"{API}/repos/{repo}/releases/latest", tok)
+        try:
+            rel = json.loads(body)
+            data = {"tag": rel["tag_name"], "published_at": rel["published_at"],
+                    "url": rel["html_url"]}
+        except (ValueError, KeyError, TypeError):
+            raise Failure(f"{repo}: could not read the latest release") from None
+        if not all(isinstance(v, str) and v for v in data.values()):
+            raise Failure(f"{repo}: the latest release lacks a tag, date or URL")
+        (tmp / f"{name}-release.json").write_text(json.dumps(data, indent=2) + "\n",
+                                                  encoding="utf-8")
+        log(f"  {name}: latest release {data['tag']} ({data['published_at']})")
+
     pages = sorted(dest.rglob("*.md"))
     if not pages:
         raise Failure(f"{repo}: {path}/ contains no .md files")
@@ -232,6 +252,11 @@ def main(argv):
             if extras.is_dir():
                 for f in extras.iterdir():
                     shutil.move(str(f), str(ROOT / f.name))
+            release = tmp / f"{e['name']}-release.json"
+            if release.is_file():
+                releases = ROOT / "_data" / "releases"
+                releases.mkdir(parents=True, exist_ok=True)
+                shutil.move(str(release), str(releases / f"{e['name']}.json"))
 
     for name, n in counts.items():
         log(f"  _{name}/: {n} page(s)")

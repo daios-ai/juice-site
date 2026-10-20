@@ -347,7 +347,15 @@ code {
     margin-top: var(--juice-space-neutral);
   }
 
+  .juice-install {
+    margin-top: var(--juice-space-large);
+  }
+
   .juice-actions {
+    margin-top: var(--juice-space-large);
+  }
+
+  .juice-beta {
     margin-top: var(--juice-space-large);
   }
 
@@ -370,14 +378,6 @@ code {
   @include mq(lg) {
     // With the wrap's own 2rem this is the reference's 4em at its widest step.
     padding-inline: var(--juice-space-large);
-
-    // Grows with the viewport, as the reference's masthead does. It had been
-    // shrinking: 4em at every other width and 3em here, the widest, which is the
-    // one place there is room for it. The band carries 76px of its own air above
-    // the parked mark, so this is not the whole measure the reader sees.
-    .juice-hero {
-      margin-top: var(--juice-space-xx-large);
-    }
   }
 }
 
@@ -491,11 +491,15 @@ code {
     }
   }
 
+  // The sections are read rather than scanned: worked examples, paragraphs and
+  // lists, which centred lines make hard to follow and under which the theme's
+  // list markers hang at an arbitrary distance from a ragged edge. Only the
+  // heading keeps the page's centre line.
   .juice-section {
     display: grid;
     gap: var(--juice-space-neutral);
     grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
+    text-align: left;
 
     // Colour and weight are deliberately left to the existing
     // `.main-content h1..h6` rule. The reference sets terminal-white here
@@ -506,13 +510,24 @@ code {
       font-size: 125% !important;
       letter-spacing: 0.075em;
       margin: 0;
+      text-align: center;
       text-transform: uppercase;
     }
 
-    p {
+    p,
+    ul {
       margin: 0;
-      max-width: 40em;
       text-wrap: pretty;
+    }
+
+    li + li {
+      margin-top: 0.5em;
+    }
+
+    // The theme spaces a fenced block itself; the section's gap is the measure.
+    .highlighter-rouge,
+    .highlight {
+      margin: 0;
     }
 
     // The section's gap is the only measure wanted; the theme adds one above
@@ -530,65 +545,20 @@ code {
     }
   }
 
-  .juice-section--wide {
-    max-width: none;
-  }
-
-  // A screenshot. Rounded and ruled like the fenced blocks and the table, so it
-  // sits as another object on the page rather than a window pasted onto it. No
-  // hover: the reference scales a linked image as feedback that it is
-  // clickable, and this one leads nowhere yet.
-  .juice-shot {
-    margin: 0;
-
-    img {
-      border: $border $border-color;
-      border-radius: 0.5em;
-      display: block;
-      height: auto;
-      width: 100%;
-    }
-
-    figcaption {
-      color: rgba($tn-terminal-white, 0.6);
-      font-size: 0.75rem;
-      font-weight: 500;
-      margin-top: var(--juice-space-medium);
-      max-width: 40em;
-      margin-inline: auto;
-      text-wrap: pretty;
-    }
-  }
-
-  // The feature list: six parallel items, so two columns on a wide screen rather
-  // than one centerd ribbon. The pairs are wrapped in divs so the grid places
-  // pairs, not terms and definitions separately. The theme lays every dl out as
-  // its own two-column grid with a colon after each term; both undone here.
-  .juice-features {
+  // The command, and the three facts a reader weighs before running it.
+  .juice-install {
     display: grid;
-    // Reading is row-major, so the wrap from one row to the next must not be the
-    // tightest gap in the block; it had been half the gap between the columns.
-    gap: var(--juice-space-large) var(--juice-space-x-large);
-    grid-template-columns: minmax(0, 1fr);
-    margin: 0;
-    text-align: left;
+    gap: var(--juice-space-medium);
 
-    @include mq(md) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .highlighter-rouge,
+    .highlight {
+      margin: 0;
     }
 
-    dt {
-      color: #fff;
-      font-weight: 700;
-      text-align: left; // the theme right-aligns terms for its own grid
-
-      &::after {
-        content: none;
-      }
-    }
-
-    dd {
-      margin: 0.35em 0 0;
+    p {
+      color: rgba($tn-terminal-white, 0.6);
+      font-size: 0.875rem;
+      margin: 0;
       text-wrap: pretty;
     }
   }
@@ -598,28 +568,6 @@ code {
     flex-wrap: wrap;
     gap: var(--juice-space-medium);
     justify-content: center;
-  }
-
-  // One flex context for every button, so a row that cannot fit them all spills
-  // evenly. With a container per group, each group wraps on its own and can
-  // strand a single button on a line of its own.
-  // Source: omacom/omarchy-site at 9832321, assets/css/nav.css.
-  .juice-actions__group {
-    display: contents;
-  }
-
-  @include mq(lg) {
-    // Wide enough for the groups to sit on their own lines as intended.
-    .juice-actions {
-      display: grid;
-    }
-
-    .juice-actions__group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--juice-space-medium);
-      justify-content: center;
-    }
   }
 
   // Source: omacom/omarchy-site at 9832321, assets/css/button.css.
@@ -665,7 +613,8 @@ code {
   }
 }
 
-// A top-level page other than the landing page: Why, Contact, Sponsor, Privacy.
+// A top-level page other than the landing page: Why, Download, Contact, Sponsor,
+// Team, Privacy.
 //
 // Its prose is the theme's, exactly as a manual page's is — headings, measure
 // and rhythm all come from `.main-content`, and nothing here restyles them. The
@@ -691,24 +640,6 @@ code {
   margin-inline: auto;
   max-width: 46rem;
   padding-top: var(--juice-space-xx-large);
-
-  // Platform glyphs beside the command. Inline SVG, since a runtime request to
-  // an icon host is a third-party resource (requirements 2.8); the paths are
-  // Simple Icons, CC0. `currentColor` keeps them the colour of the line they
-  // sit in, so they follow the palette without a rule of their own.
-  .juice-os-line {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35em;
-  }
-
-  .juice-os {
-    flex: none;
-    height: 1.1em;
-    vertical-align: -0.15em;
-    width: 1.1em;
-  }
 
   // The route home. The sidebar's linked logotype is the usual one, and the
   // minimal layout omits the sidebar; below the md breakpoint these pages have
@@ -740,18 +671,6 @@ code {
     &:focus-visible .juice-mark {
       opacity: 0.8;
     }
-  }
-}
-
-// A page that is acted on rather than read — a command, and a link or two — is
-// the same kind of block as the landing page's title, not the same kind as an
-// essay. Centering is added here rather than subtracted from the pages that
-// read as prose, so nothing needs an exception.
-.main-content .juice-page--center {
-  text-align: center;
-
-  .juice-os-line {
-    justify-content: center;
   }
 }
 

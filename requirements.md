@@ -21,8 +21,8 @@ The manuals are not authored in this repository. Each is maintained in the repos
 of the component it documents and is copied in at build time. This repository holds
 the landing page, the theme, the build, and the manifest listing the manuals.
 
-No manual content is committed here. The directories `_<name>/` are build output and
-are listed in `.gitignore`.
+No manual content is committed here. The directories `_<name>/` and `_data/releases/`
+are build output and are listed in `.gitignore`.
 
 ## 2. Requirements
 
@@ -63,7 +63,9 @@ manual can change without a commit to this repository.
 1. `script/fetch-manuals` reads `manuals.yml`. For each entry it resolves `ref` to a
    commit through the GitHub API, downloads the directory `path` as a tarball, and
    writes it to `_<name>/`. Archive members that traverse paths or are links are
-   dropped. A `_config.yml` inside the manual is dropped. The script logs the
+   dropped. A `_config.yml` inside the manual is dropped. For an entry with
+   `release: true` it writes the repository's latest release (tag, date, URL) to
+   `_data/releases/<name>.json`. The script logs the
    repository, commit and page count per manual, and warns about links to
    `github.com/<owner>/<repo>/blob/` (§8).
 
@@ -99,6 +101,7 @@ script/fetch-manuals      build step 1
 script/check-site         build step 3
 .github/workflows/        build steps 1–4
 _<name>/                  fetched manuals; not committed
+_data/releases/           latest release per manual repository; not committed
 ```
 
 ## 5. Manual front matter
@@ -140,9 +143,10 @@ one variable upright (weights 300–700) and one italic, declared in `setup.scss
 
 D6. The palette and the landing page's structure follow `omacom/omarchy-site` at
 commit `9832321`. Stylesheet rules taken from that source cite the file they came
-from. The landing page adds one departure from that source: three soft radial
-gradients behind the hero, in the mark's pink and magenta and the palette's blue. No
-requirement in §2 depends on the appearance.
+from. The landing page departs from that source twice: three soft radial gradients
+behind the hero, in the mark's pink and magenta and the palette's blue, and section
+prose set flush left under a centred heading. No requirement in §2 depends on the
+appearance.
 
 D7. `check-site` and `fetch-manuals` are Python 3. `check-site` uses the standard
 library only; `fetch-manuals` additionally requires PyYAML. Both parse rendered or
@@ -171,6 +175,10 @@ with an extension. `nav_exclude` keeps them out of a manual's sidebar, which is
 that manual's namespace (D2). They are reached from the footer, which is shared
 with the manual.
 
+D11. The landing page and `/download/` state the Juice repository's current
+release, read from `site.data.releases.juice` (§3, step 1). A build without that
+file omits the release rather than stating a stale one.
+
 ## 7. Notes for editors
 
 Constraints of the theme and of kramdown that affect edits to `index.md` and the
@@ -196,7 +204,7 @@ kept in `assets/js/`.
 `id`. kramdown assigns ids to Markdown headings, not to headings written as HTML.
 
 7.6 The theme styles `dl` as a two-column grid, right-aligns `dt`, and appends a
-colon via `dt::after`. `.juice-features` overrides all three.
+colon via `dt::after`. A `dl` outside the manuals must override all three.
 
 7.7 A Ruby toolchain is not assumed. Without one, changes are verified by pushing
 and reading the workflow log, then fetching the deployed page.
