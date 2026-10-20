@@ -56,6 +56,32 @@ and compose into new ones.</p>
 </div>
 </nav>
 
+<section class="juice-section juice-section--wide">
+<h2>Juice in practice</h2>
+
+<dl class="juice-features">
+<div>
+<dt>Sell software that buys software</dt>
+<dd>You sell a market report for $1. Your service buys $0.20 of data and $0.15 of analysis from other providers, keeping the remaining margin before fees. Your customer buys one result at one price.</dd>
+</div>
+
+<div>
+<dt>Hire a service you've never heard of</dt>
+<dd>Your AI agent needs a specialist translator. It discovers one on another node, checks ratings backed by actual transactions, purchases the translation, and rates the result. Neither you nor your agent needs an account with the provider.</dd>
+</div>
+
+<div>
+<dt>Build a reputation that isn't owned by a platform</dt>
+<dd>Your OCR service has completed thousands of paid jobs. Customers on other nodes can independently verify evidence of those transactions and their ratings, without learning who your customers were, what they paid, or what they processed.</dd>
+</div>
+
+<div>
+<dt>Let a paid computation wait for a human</dt>
+<dd>Your insurance-processing service needs an adjuster's approval. It sends a task to someone on another node and waits overnight, keeping its funds reserved. When the adjuster responds, execution resumes without spending the adjuster's money.</dd>
+</div>
+</dl>
+</section>
+
 {%- comment -%}
   A definition list rather than a bulleted list: the theme draws list markers as an
   absolutely positioned `::before` at a negative margin, which under centred text hangs
@@ -112,12 +138,13 @@ and compose into new ones.</p>
 
 <section class="juice-section juice-section--wide" markdown="1">
 
+
 <h2>Why not MCP + APIs + x402?</h2>
 
-MCP lets agents call tools, and x402 lets them pay for services. That works when the agent manages the workflow itself.
+MCP lets agents use tools. APIs expose services. x402 enables HTTP payments.
+That works when the agent manages the workflow itself.
 
-Juice adds bounded delegation: an action can spend its budget on other actions, which can do the same recursively. 
-This allows agents to delegate work to services discovered at runtime without centralizing coordination and spending authority.
+Juice adds bounded delegation: services can spend their budgets on other services, recursively, across independent nodes. Agents can delegate work to services discovered at runtime without centralizing coordination and spending authority.
 
 ```text
 agent
@@ -132,16 +159,19 @@ action A
         └── provider margin
 ```
 
+Built-in capabilities:
+
 <table class="juice-compare">
 <thead>
 <tr><th></th><th>MCP + APIs + x402</th><th>Juice</th></tr>
 </thead>
 <tbody>
-<tr><td>Call external capabilities</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-<tr><td>Pay for a service</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-<tr><td>Delegate a budget with a task</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
-<tr><td>Preserve it through recursive delegation</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
-<tr><td>Produce evidence across the execution</td><td class="no">Application-defined</td><td class="yes">Native</td></tr>
+<tr><td>Call external services</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+<tr><td>Pay per call</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+<tr><td>Delegate a prepaid budget</td><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><td>Enforce budgets recursively</td><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><td>Cross-node execution accounting</td><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><td>Verifiable trade-backed ratings</td><td class="no">No</td><td class="yes">Yes</td></tr>
 </tbody>
 </table>
 </section>
