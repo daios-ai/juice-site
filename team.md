@@ -19,10 +19,10 @@ nav_exclude: true
 <h2><a href="https://scholar.google.com/citations?user=GK-j94AAAAAJ">Pedro A. Ortega</a></h2>
 <p class="juice-team__role">Creator of Juice</p>
 <p>Among the earliest hires working on AGI safety at Google DeepMind, where he
-built and led one of its first safety teams. His research spans
-information-theoretic bounded rationality, strategic interaction, causality and
-AI safety. Since DeepMind he has developed decentralized, open-source
-architectures for agentic intelligence.</p>
+built and led one of its first safety teams. His work spans
+large-scale planning, bounded rationality, causality, and
+AI safety. Since DeepMind he has developed open-source
+architectures for decentralized artificial general intelligence.</p>
 </div>
 </li>
 </ul>
