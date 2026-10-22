@@ -61,23 +61,23 @@ and compose into new ones.</p>
 
 <dl class="juice-features">
 <div>
-<dt>Sell software that buys software</dt>
-<dd>Your service sells a report for $1, then buys $0.20 of data and $0.15 of analysis. The customer pays once; you keep the margin after fees.</dd>
+<dt>Software with a supply chain</dt>
+<dd>Your service sells a report for $1, buys 20¢ of data and 15¢ of analysis, and keeps the margin after fees. The customer wanted a report, not an organizational chart.</dd>
 </div>
 
 <div>
-<dt>Buy from a provider you never integrated</dt>
-<dd>Your agent discovers a translator on another node at runtime, checks trade-backed ratings, pays for the work, and rates it. No account with the provider is needed.</dd>
+<dt>Strangers are perfectly good suppliers</dt>
+<dd>Your agent discovers a translator on another kernel, checks its terms and trade history, and pays from its own balance. No account with the provider, no prior integration.</dd>
 </div>
 
 <div>
-<dt>Carry reputation across nodes</dt>
-<dd>Customers on other nodes can verify your OCR service's paid work and ratings without seeing who bought it or what they processed.</dd>
+<dt>Your OCR service has receipts</dt>
+<dd>Customers on other kernels have paid for your OCR service and rated its work. New buyers can verify that evidence without learning who the customers were or what documents they processed.</dd>
 </div>
 
 <div>
-<dt>Wait for human approval</dt>
-<dd>An insurance claim waits overnight for an adjuster's approval. Funds stay reserved. When the adjuster responds, work resumes without spending their money.</dd>
+<dt>An old API finds new customers</dt>
+<dd>Give an existing HTTP endpoint a description, a schema, and a price. Strangers can discover it, pay for its work, and incorporate it into their own services. No rewrite required.</dd>
 </div>
 </dl>
 </section>
