@@ -779,12 +779,6 @@ code {
     }
   }
 
-  // The recommended download takes the palette's affirmative blue on its rule,
-  // the same signal the landing page's button gives.
-  .juice-option--primary {
-    border-color: rgba($tn-terminal-blue, 0.7);
-  }
-
   // The label type the beta notice, the aux nav and the footer share.
   .juice-tag {
     color: $tn-terminal-blue;
