@@ -95,6 +95,7 @@ _sass/custom/setup.scss   palette variables, logotype variables, @font-face
 _sass/custom/custom.scss  theme overrides and landing page styles
 assets/                   logo, icons, fonts, portraits, masthead script
 install.sh                pulled by build step 1; served at the root
+install-desktop.sh        copy of the juice-ui installer; served at the root
 script/fetch-manuals      build step 1
 script/check-site         build step 3
 .github/workflows/        build steps 1–4
@@ -153,13 +154,6 @@ D8. The landing page's hero is an inline SVG animated by
 visible with JavaScript disabled (2.7); the script clears it on its first frame and
 restores it under `prefers-reduced-motion`.
 
-D10. Traffic is measured by Cloudflare Web Analytics, emitted by
-`_includes/head_custom.html` only when `cloudflare_analytics_token` is set in
-`_config.yml`. It is the site's only third-party resource, loaded as a module
-script, which defers by definition (2.8).
-It sets no cookie and stores nothing on the device, so no consent dialogue is
-required; what it collects is stated at `/privacy/`.
-
 D9. A site page other than the landing page is a Markdown file at the repository
 root carrying `layout: minimal`, an explicit directory `permalink`, and
 `nav_exclude: true`, wrapped in `class="juice-page"`. Its prose is rendered by
@@ -170,6 +164,13 @@ redirect; D3 does not apply, because site pages carry no relative links written
 with an extension. `nav_exclude` keeps them out of a manual's sidebar, which is
 that manual's namespace (D2). They are reached from the footer, which is shared
 with the manual.
+
+D10. Traffic is measured by Cloudflare Web Analytics, emitted by
+`_includes/head_custom.html` only when `cloudflare_analytics_token` is set in
+`_config.yml`. It is the site's only third-party resource, loaded as a module
+script, which defers by definition (2.8).
+It sets no cookie and stores nothing on the device, so no consent dialogue is
+required; what it collects is stated at `/privacy/`.
 
 ## 7. Notes for editors
 
