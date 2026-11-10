@@ -743,15 +743,65 @@ code {
   }
 }
 
-// A page that is acted on rather than read — a command, and a link or two — is
-// the same kind of block as the landing page's title, not the same kind as an
-// essay. Centering is added here rather than subtracted from the pages that
-// read as prose, so nothing needs an exception.
-.main-content .juice-page--center {
-  text-align: center;
+// The Download page. Its title and platform line are centered, like the
+// landing page's title block; everything below is read, so it keeps the left
+// edge the other site pages have. Centered prose starts each wrapped line at a
+// different position, which is why this is not centered as a whole.
+.main-content .juice-download {
+  > h1 {
+    text-align: center;
+  }
 
   .juice-os-line {
     justify-content: center;
+    margin-bottom: var(--juice-space-large);
+  }
+
+  // One panel per download, each with the same parts in the same order: name,
+  // one line of description, command, links. The rule is what makes the parts
+  // read as one unit and the two downloads as two.
+  .juice-option {
+    border: $border $border-color;
+    border-radius: 0.5em;
+    margin-top: var(--juice-space-large);
+    padding: var(--juice-space-large);
+
+    h2 {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 30rem) {
+      padding: var(--juice-space-medium);
+    }
+  }
+
+  // The recommended download takes the palette's affirmative blue on its rule,
+  // the same signal the landing page's button gives.
+  .juice-option--primary {
+    border-color: rgba($tn-terminal-blue, 0.7);
+  }
+
+  // The label type the beta notice, the aux nav and the footer share.
+  .juice-tag {
+    color: $tn-terminal-blue;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.075em;
+    margin: 0 0 0.5em;
+    text-transform: uppercase;
+  }
+
+  // A command is the one thing on this page a reader must see whole. The theme
+  // scrolls a long line; at phone width that hides the end of the URL, so here
+  // it wraps instead. A soft wrap is not copied as a line break.
+  pre,
+  pre code {
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
   }
 }
 
