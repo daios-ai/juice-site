@@ -20,13 +20,11 @@ nav_exclude: true
 
 ## Juice Desktop
 
-The kernel, chat and an assistant agent, used from a web interface in your browser.
+The kernel + web interface.
 
 ```sh
 curl -fsSL https://juiceos.org/install-desktop.sh | sh
 ```
-
-Then run `juice-ui` and open `http://127.0.0.1:8080`.
 
 [Read the script]({{ '/install-desktop.sh' | relative_url }}) &middot; [Source](https://github.com/daios-ai/juice-ui)
 

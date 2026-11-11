@@ -182,15 +182,17 @@ Built-in capabilities:
   a reader while the juice-ui manual is unwritten. It gains both together.
 {%- endcomment -%}
 <section class="juice-section juice-section--wide">
-<h2>Juice UI (coming soon)</h2>
+<h2>Juice Desktop</h2>
 
 <figure class="juice-shot">
-<img src="{{ '/assets/juice-ui.webp' | relative_url }}" width="1785" height="860"
+<img src="{{ '/assets/juice-ui.webp' | relative_url }}" width="1927" height="985"
      loading="lazy"
-     alt="A grid of action cards, each with a name, a price, a description, a
-          success rate and a latency, beside a sidebar and a search field.">
-<figcaption>A web interface to a kernel: everything you can do there, in a
-browser. Coming soon.</figcaption>
+     alt="A conversation about exoplanets between a user and an assistant, in a
+          browser. A sidebar on the left lists conversations. A panel on the
+          right shows an action that looks up one exoplanet, with its price, its
+          ratings and a form to run it.">
+<figcaption>Juice Desktop is a web interface to a kernel, where you can
+collaborate with people and agents.</figcaption>
 </figure>
 </section>
 
